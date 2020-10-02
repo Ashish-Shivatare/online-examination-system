@@ -55,28 +55,28 @@
 						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 						aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="logout">Logout</a> <a
-							class="dropdown-item" href="#">My Account</a>
+							class="dropdown-item" href="changePassword">My Account</a>
 					</div></li>
 			</ul>
 		</nav>
 	</div>
 
 	<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm">
-		<a class="nav-link" href="#" role="button"> <img
+		<a class="nav-link" href="dashboard" role="button"> <img
 			class="dashboard-img"
 			src="<c:url value="/resources/image/dashboard.svg"/>" /> <span
 			id="dashboardText">Dashboard</span>
-		</a> <a class="nav-link" href="#" role="button"> <i
+		</a> <a class="nav-link" href="questionType" role="button"> <i
 			class="material-icons management-option-img">widgets</i> <span
 			id="managementOption">Question Type</span>
-		</a> <a class="nav-link" href="#" role="button"> <img
+		</a> <a class="nav-link" href="addQuestion" role="button"> <img
 			class="add-question-img"
 			src="<c:url value="/resources/image/bullseye-grey.svg"/>" /> <span
 			id="addQuestion">Add Questions</span>
-		</a> <a class="nav-link" href="#" role="button"> <i
+		</a> <a class="nav-link" href="studentInformation" role="button"> <i
 			class="fas fa-table"></i> <span id="studentDetails">Student
 				Details</span>
-		</a> <a class="nav-link" href="#" role="button"> <svg width="1em"
+		</a> <a class="nav-link" href="studentReport" role="button"> <svg width="1em"
 				height="1em" viewBox="0 0 16 16" class="report-img"
 				fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
@@ -165,13 +165,10 @@
 	</div>
 	<script type="text/javascript"> 
 		var labelArray = ${donutLabelArray};
-		var valueArray = ${donutValueArray};
-		
+		var valueArray = ${donutValueArray};	
 		var passValueArray = ${passValueArray};
 		var failedValueArray = ${failedValueArray};
 		var totalValueArray = ${totalValueArray};
-		
-		
 	</script>
 	<script src="<c:url value="/resources/js/donutchart.js"/>"></script>
 	<script src="<c:url value="/resources/js/barchart.js"/>"></script>

@@ -24,6 +24,12 @@ public class DashboardController {
 		return "dashboard";
 	}
 	
+	@RequestMapping(path = "/changePassword")
+	public String myAccount() {
+		System.out.println("ChangePassword Contoller");
+		return "changePassword";
+	}
+	
 	public String exam(Model model) {
 		List<Exam> exam = this.adminService.getExam();
 		int totalRegStudents = 0;
