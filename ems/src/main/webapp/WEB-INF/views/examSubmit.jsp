@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>test</title>
+<title>Check Submission</title>
 </head>
 <body>
-<h1>Login Failed Retry</h1>
-<a href="login"> </a>
+   <h1>Submit your exam</h1>
+   <h4><a role="button" href="finish">Submit Your Exam</a></h4>
 </body>
 </html>

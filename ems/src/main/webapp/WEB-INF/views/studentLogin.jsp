@@ -24,13 +24,13 @@
 <body style="background-color: orange;">
 
 	<div class="container">
-		<form action="loginForm" method="post">
+		<form action="studentLoginForm" method="post">
 			<div class="form-group">
 				<h4 id="signIn">Sign In</h4>
 			</div>
 
 			<div class="form-group">
-				<input name="username" type="text" placeholder="Username"
+				<input name="email" type="text" placeholder="Email"
 					class="form-control" />
 			</div>
 
@@ -56,7 +56,7 @@
 			<br />
 			<div class="form-group">
 				<h6 id="accountRegister">
-					Don't have an account?<a href="studentLogin"><span id="signUp">Sign
+					Don't have an account?<a href="registration"><span id="signUp">Sign
 							Up</span></a>
 				</h6>
 			</div>

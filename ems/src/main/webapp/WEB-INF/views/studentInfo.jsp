@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -6,9 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Student details</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 .container {
 	margin: 20px;
@@ -24,8 +24,8 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Student name</th>
+						<th scope="col">Id</th>
+						<th scope="col">name</th>
 						<th scope="col">Email</th>
 						<th scope="col">Mobile No</th>
 						<th scope="col">Higher Education</th>
@@ -41,22 +41,24 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td><a href="#">Edit</a></td>
+				<c:forEach var="student" items="${studentInfoList}">
+					<tr>	
+							<td><c:out value="${student.id}"/></td>
+							<td><c:out value="${student.name}"/></td>
+							<td><c:out value="${student.email}"/></td>
+							<td><c:out value="${student.mobileNo}"/></td>
+							<td><c:out value="${student.higherEducation}"/></td>
+							<td><c:out value="${student.gender}"/></td>
+							<td><c:out value="${student.dob}"/></td>
+							<td><c:out value="${student.address}"/></td>
+							<td><c:out value="${student.city}"/></td>
+							<td><c:out value="${student.country}"/></td>
+							<td><c:out value="${student.panCard}"/></td>
+							<td><c:out value="${student.higherEducationCertificate}"/></td>
+							<td><c:out value="${student.registrationDate}"/></td>
+							<td><a href="update/${student.id}">Edit</a></td>		
 					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

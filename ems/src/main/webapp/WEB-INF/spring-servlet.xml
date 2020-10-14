@@ -17,6 +17,15 @@
 	<tx:annotation-driven />
 	<context:component-scan base-package="admin" />
 
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
 	<mvc:annotation-driven />
 	<mvc:resources location="/WEB-INF/resources/"
 		mapping="/resources/**" />
@@ -48,9 +57,9 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+			<!-- 	<prop key="hibernate.show_sql">true</prop> -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<!-- <prop key="hibernate.format_sql">true</prop> -->
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 			</props>
 		</property>
 
@@ -60,6 +69,9 @@
 				<value>admin.model.Exam</value>
 				<value>admin.model.QuestionType</value>
 				<value>admin.model.Question</value>
+				<value>admin.model.Answer</value>
+				<value>admin.model.Student</value>
+				<value>admin.model.Login</value>
 			</list>
 		</property>
 	</bean>

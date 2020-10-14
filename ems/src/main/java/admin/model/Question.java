@@ -1,8 +1,5 @@
 package admin.model;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -94,5 +91,10 @@ public class Question {
 		this.correctAnswer = correctAnswer;
 		this.questionOption = questionOption;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", question=" + question + ", answerButton=" + answerButton + ", questionType="
+				+ questionType + ", correctAnswer=" + correctAnswer + ", questionOption=" + questionOption + "]";
+	}	
 }

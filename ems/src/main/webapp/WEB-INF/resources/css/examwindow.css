@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  padding-left: 0px;
+  height: 600px;
+  width: 1200px;
+  margin: 35px;
+  background: #f7f7f8;
+}
+.col.exam-center-heading,
+.col.show-question {
+  text-align: center;
+}
+#address,
+#showQuestion {
+  color: black;
+}
+
+#firstLine {
+  border: 2px solid black;
+  margin-bottom: 0px;
+}
+#secondLine {
+  border-color: #2f2f2f;
+  border-width: 0.1px;
+  margin-bottom: 0px;
+  position: relative;
+  top: -12.5px;
+}
+.d-flex {
+  padding-right: 50px;
+  padding-left: 150px;
+  color: #2f2f2f;
+}
+.date-time {
+  padding: 0px;
+  padding-top: 5px;
+  margin-bottom: 15px;
+}
+#questionNo {
+  color: #000;
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+#options {
+  padding-top: 10px;
+}
+label input {
+  display: none;
+}
+.radio {
+  height: 16px;
+  width: 16px;
+  background-color: #f7f7f8;
+  border-radius: 50%;
+  border: 0.5px solid #2f2f2f;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+}
+label input:checked ~ .radio {
+  background-color: #4437a0;
+}
+.checkbox {
+  height: 15px;
+  width: 15px;
+  background-color: #f7f7f8;
+  border: 0.5px solid #2f2f2f;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+}
+label input:checked ~ .checkbox {
+  background-color: #4437a0;
+} 
+[type="checkbox"]:checked+span:before {
+ 	position: absolute;
+	top: -4px;
+	left: -5px; 
+}
+.btn.next-button {
+  font-size: large;
+  border: 0px;
+  color: white;
+  background-color: #4437a0;
+  width: 115px;
+  height: 30px;
+  line-height: initial;
+  position: relative;
+  top: 100px;
+}
