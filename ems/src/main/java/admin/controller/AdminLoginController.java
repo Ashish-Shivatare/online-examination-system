@@ -14,7 +14,7 @@ import admin.model.Account;
 import admin.model.AccountModel;
 
 @Controller
-public class LoginController {
+public class AdminLoginController {
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {

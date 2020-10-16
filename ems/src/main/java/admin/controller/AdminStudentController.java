@@ -12,7 +12,7 @@ import admin.model.Student;
 import admin.service.AdminService;
 
 @Controller
-public class StudentController {
+public class AdminStudentController {
 	
 	@Autowired
 	private AdminService adminservice;
@@ -22,7 +22,7 @@ public class StudentController {
 		System.out.println("Student Controller");
 		List<Student> studentList = this.adminservice.getStudent();
 		model.addAttribute("studentInfoList", studentList);
-		return "studentInfo";
+		return "dashboard/studentInfo";
 	}
 	
 	@RequestMapping(path = "/update/{studentId}")
@@ -42,6 +42,6 @@ public class StudentController {
 	@RequestMapping(path = "/studentReport")
 	public String studentReport() {
 		System.out.println("StudentReport Controller");
-		return "reports";
+		return "dashboard/reports";
 	}
 }

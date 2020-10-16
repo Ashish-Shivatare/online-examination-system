@@ -13,26 +13,37 @@
 <title>Exam Over</title>
 </head>
 <body>
-	<h1>Exam Finished</h1>
 	<div class="container">
-		<table class="table table-bordered" style="width: 100%">
-			<tr>
-				<th>Total Solved Question:</th>
-				<td><c:out value="${totalSolvedQuestion}" /></td>
-			</tr>
-			<tr>
-				<th>Total Correct Answer</th>
-				<td><c:out value="${totalCorrectAnswer}" /></td>
-			</tr>
-			<tr>
-				<th>Total Incorrect Answer</th>
-				<td><c:out value="${totalIncorrectAnswer}" /></td>
-			</tr>
-			<tr>
-				<th>Status</th>
-				<td><c:out value="${status}" /></td>
-			</tr>
-		</table>
+		<div class="text-center">
+			<h1>Exam Result</h1>
+		</div>
+		<div class="text-center">
+			<table class="table table-bordered" style="width: 100%">
+				<tr>
+					<th>Total Solved Question:</th>
+					<td><c:out value="${totalSolvedQuestion}" /></td>
+				</tr>
+				<tr>
+					<th>Total Correct Answer</th>
+					<td><c:out value="${totalCorrectAnswer}" /></td>
+				</tr>
+				<tr>
+					<th>Total Incorrect Answer</th>
+					<td><c:out value="${totalIncorrectAnswer}" /></td>
+				</tr>
+				<tr>
+					<th>Status</th>
+					<td><c:out value="${status}" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="text-center">
+			<h3>
+				<a class="dropdown-item"
+					href="${pageContext.request.contextPath}/studentLogout"
+					role="button">Click To Logout From DashBoard</a>
+			</h3>
+		</div>
 	</div>
 </body>
 </html>

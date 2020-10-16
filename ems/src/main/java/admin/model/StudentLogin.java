@@ -1,6 +1,9 @@
 package admin.model;
+import javax.persistence.Entity;
 
-public class Login {
+@Entity
+public class StudentLogin {
+	
 	private String email;
 	private String password;
 	
@@ -16,22 +19,19 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Login(String email, String password) {
+	public StudentLogin(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Login() {
+	public StudentLogin() {
 		super();
 	}
 	
 	@Override
 	public String toString() {
-		return "Login [email=" + email + ", password=" + password + "]";
+		return "StudentLogin [email=" + email + ", password=" + password + "]";
 	}
 	
-	
-
 }

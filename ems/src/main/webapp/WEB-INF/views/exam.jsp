@@ -45,7 +45,7 @@
 			<div id="questionNo" class="d-flex">
 				<div class="mr-auto p-2">
 					<h4>
-						<b>Question <span id="questionNumber"><c:out value="${queNumber}" /></span></b>
+						<b>Question <span id="questionNumber"><c:out value="${questionNumber}" /></span></b>
 					</h4>
 				</div>
 			</div>
@@ -76,7 +76,6 @@
 				<div class="p-2">
 					<button type="button" id="nextButton" class="btn next-button">Next</button>
 				</div>
-				
 			</div>
 
 		</div>

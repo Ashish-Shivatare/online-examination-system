@@ -1,9 +1,9 @@
 package admin.dao;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.transaction.Transactional;
 
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,6 +12,7 @@ import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
+import admin.model.User;
 
 @Repository
 public class AdminDaoImpl {
@@ -78,5 +79,74 @@ public class AdminDaoImpl {
 		List<Answer> list=new ArrayList<Answer>();  
 		list = this.hibernateTemplate.loadAll(Answer.class);
 		return list;
+	}
+	
+	@Transactional
+	public void saveUser(User user) {
+		this.hibernateTemplate.saveOrUpdate(user);
+	}
+	
+	public boolean searchEmail(String email) {
+        boolean isValidUser = false;
+		
+		User user = new User();
+	    user.setEmail(email);
+
+	    List<User> existUserObj = this.hibernateTemplate.findByExample(user);
+	    if(existUserObj != null && existUserObj.size() > 0){
+	    	isValidUser = true;
+	    }
+	    return isValidUser;
+    }
+	
+	public boolean searchUser(String email, String password) {
+		boolean isValidUser = false;
+
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(password);
+
+		List<User> existUserObj = this.hibernateTemplate.findByExample(user);
+
+		if(existUserObj != null && existUserObj.size() > 0)
+		{
+			isValidUser = true;
+		}
+		return isValidUser;
+	}
+	
+	@Transactional
+	public void updateUser(String email) {
+		int id = 0;
+		User findUser = new User();
+	    findUser.setEmail(email);
+	    
+	    List<User> existUserObj = this.hibernateTemplate.findByExample(findUser);
+	    for (User u : existUserObj) {
+	    	id = u.getId();
+		}
+	    User user = this.hibernateTemplate.load(User.class, id);
+	    user.setExamAttempt("true");
+	    this.saveUser(user);
+	}
+	
+	public boolean examAttempt(String email, String password) {
+		boolean isExamAttempt = false;
+		
+		User user = new User();
+		user.setEmail(email);
+		user.setPassword(password);
+
+		List<User> existUserObj = this.hibernateTemplate.findByExample(user);
+
+		if(existUserObj != null && existUserObj.size() > 0)
+		{
+			for (User u : existUserObj) {
+				if(u.getExamAttempt()!= null && u.getExamAttempt().equals("true")) {
+					isExamAttempt = true;
+				}
+			}
+		}
+		return isExamAttempt;
 	}
 }

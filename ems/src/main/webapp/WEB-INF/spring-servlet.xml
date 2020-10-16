@@ -36,6 +36,10 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<bean id="messageSource"
+     class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+     p:basename="/WEB-INF/resources/messages/messages" />
 
 
 	<!-- hibernate datasource -->
@@ -71,7 +75,7 @@
 				<value>admin.model.Question</value>
 				<value>admin.model.Answer</value>
 				<value>admin.model.Student</value>
-				<value>admin.model.Login</value>
+				<value>admin.model.User</value>
 			</list>
 		</property>
 	</bean>

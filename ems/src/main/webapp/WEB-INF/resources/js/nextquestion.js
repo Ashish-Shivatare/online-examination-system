@@ -17,7 +17,7 @@ $(document).ready(function() {
 		if(queCount == 31){
 			location.replace("finish/studentDashboard");
 		}
-
+		
 		$.ajax({
 			type : 'POST',
 			contentType: 'application/json',

@@ -1,5 +1,4 @@
 package admin.service;
-import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
+import admin.model.User;
 
 @Service
 public class AdminService {
@@ -58,5 +58,25 @@ public class AdminService {
 		
 		public List<Answer> getAnswer() {
 			return this.adminDaoImpl.getAllAnswer();
+		}
+		
+		public void createUser(User user) {
+			this.adminDaoImpl.saveUser(user);
+		}
+		
+		public boolean findEmail(String email){
+			return this.adminDaoImpl.searchEmail(email);
+		}
+		
+		public boolean studentLogin(String email, String password){
+			return this.adminDaoImpl.searchUser(email, password);
+		}
+		
+		public void updateUserDetails(String email) {
+			this.adminDaoImpl.updateUser(email);
+		}
+		
+		public boolean getExamAttempt(String email, String password){
+			return this.adminDaoImpl.examAttempt(email, password);
 		}
 }
