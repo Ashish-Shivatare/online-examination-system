@@ -1,6 +1,6 @@
 package admin.controller;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,52 +19,32 @@ public class ExamController {
 
 	@Autowired
 	private AdminService adminService;
-	private int queCount = 0;
-	Integer[] randomArray = new Integer[30];
-	private int totalQuestion = randomArray.length;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getExamWindow(Model model) {
-		this.getRandomNumber();
 		this.getNextQuestion(model);
-		System.out.println(Arrays.toString(randomArray));
-		return "exam";    
+		return "examination/examWindow";    
 	}
-
-	public void getRandomNumber() {
-		System.out.println("getRandom");
-		int serialCount = 1;
-		for (int i = 0; i < randomArray.length; i++) {
-			randomArray[i] = serialCount;
-			serialCount++;
-		}
-		Collections.shuffle(Arrays.asList(randomArray));
+	
+	public static int getRandomInteger(int maximum, int minimum){ 
+		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 	}
 
 	public Question getNextQuestion(Model model) {
-		System.out.println("getNextQuestion");
-		Question question = this.adminService.getQuestion(randomArray[queCount]);
+		int r = getRandomInteger(1, 30);
+		Question question = this.adminService.getQuestion(r);
 		model.addAttribute("que", question);
 		model.addAttribute("questionNumber", 1);
-		model.addAttribute("totalQuestions", this.totalQuestion);
-		System.out.println(queCount);
-		if(queCount != 29) {
-			queCount++;
-		}
+		model.addAttribute("totalQuestions", 30);
 		return question;
 	}
 
 	@RequestMapping(value = "question", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Question getAnswers(@RequestBody Answer answer, Model model) {
+		if(answer.getSelectedAnswer() != null && answer.getSelectedAnswer().size() > 0 ) {
+			this.adminService.addAnswer(answer);
+		}
 		Question question = this.getNextQuestion(model);
-		//this.adminService.addAnswer(answer);
-		System.out.println(answer);
 		return question;    
-	}
-
-	@RequestMapping(value="submitExam" ,method = RequestMethod.GET)
-	public String submitExam() {
-		System.out.println("submit exam controller");
-		return "examSubmit";    
 	}
 }

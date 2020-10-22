@@ -19,6 +19,7 @@ public class ExamFinishController {
 
 	@RequestMapping(value="/studentDashboard" ,method = RequestMethod.GET)
 	public String finishExam(Model model) {
+		this.adminService.saveFinalSubmission();
 		List<Answer> answer  = this.adminService.getAnswer();
 		int solvedQuestions = 0;
 		int correctAnswers  = 0;
@@ -48,6 +49,6 @@ public class ExamFinishController {
 		model.addAttribute("totalIncorrectAnswer", incorrectAnswers);
 		model.addAttribute("status", status);
 	
-		return "studentDashboard";    
+		return "student/dashboard";    
 	}
 }

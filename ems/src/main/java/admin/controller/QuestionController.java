@@ -19,14 +19,14 @@ public class QuestionController {
 	
 	@RequestMapping(path = "/questionType")
 	public String questionType() {
-		return "questionType";
+		return "admin/dashboard/questionType";
 	}
 	
 	@RequestMapping(path = "/addQuestion")
 	public String addQuestion(Model model){
 		List<QuestionType> list = this.adminService.getQuestionType();
 		model.addAttribute("allQuestionType", list);	
-		return "addQuestion";
+		return "admin/dashboard/addQuestion";
 	}
 	
 	
@@ -36,7 +36,7 @@ public class QuestionController {
 		if(questionType != null) {
 			this.adminService.createQuestionType(questionType);
 		}
-		return "questionType";
+		return "admin/dashboard/questionType";
 	}
 
 	@RequestMapping(path = "/addQuestionForm", method = RequestMethod.GET)
@@ -45,6 +45,6 @@ public class QuestionController {
 		if(question != null) {
 			this.adminService.createQuestion(question);
 		}
-		return "addQuestion";
+		return "admin/dashboard/addQuestion";
 	}
 }

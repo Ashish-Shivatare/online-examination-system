@@ -22,14 +22,14 @@ public class AdminStudentController {
 		System.out.println("Student Controller");
 		List<Student> studentList = this.adminservice.getStudent();
 		model.addAttribute("studentInfoList", studentList);
-		return "dashboard/studentInfo";
+		return "admin/dashboard/studentInfo";
 	}
 	
 	@RequestMapping(path = "/update/{studentId}")
 	public String updateStudentInfo(@PathVariable("studentId") int studentId, Model model) {
 		Student student = this.adminservice.getStudentDetails(studentId);
 		model.addAttribute("student", student);
-		return "updateStudent";
+		return "admin/dashboard/updateStudent";
 	}
 	
 	@RequestMapping(path = "/updateStudentForm", method = RequestMethod.POST)
@@ -42,6 +42,6 @@ public class AdminStudentController {
 	@RequestMapping(path = "/studentReport")
 	public String studentReport() {
 		System.out.println("StudentReport Controller");
-		return "dashboard/reports";
+		return "admin/dashboard/reports";
 	}
 }

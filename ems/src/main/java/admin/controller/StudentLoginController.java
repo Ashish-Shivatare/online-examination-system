@@ -20,38 +20,13 @@ public class StudentLoginController {
 	@Autowired
 	private AdminService adminService;
 
-	//	@RequestMapping(path = "/studentLogin")
-	//	public String studentLogin() {
-	//		System.out.println("studentLogin controller");
-	//		return "studentLogin";    
-	//	}
-	//	
-	//	@RequestMapping(path = "/studentLoginForm")
-	//	public String studentLoginForm(@ModelAttribute StudentLogin studentLogin) {
-	//		System.out.println("studentLoginForm controller");
-	//		Boolean registeredStudent = this.adminService.studentLogin(studentLogin.getEmail(), studentLogin.getPassword());  
-	//		if(registeredStudent == true){
-	//			if(!this.adminService.getExamAttempt(studentLogin.getEmail(), studentLogin.getPassword())) {
-	//				this.adminService.updateUserDetails(studentLogin.getEmail());
-	//				return "redirect:exam";
-	//			}
-	//			else {
-	//				System.out.println(this.adminService.getExamAttempt(studentLogin.getEmail(), studentLogin.getPassword()));
-	//				return "redirect:finish/studentDashboard";
-	//			}
-	//		}
-	//		else {
-	//			return "studentLogin";
-	//		}
-	//	}
-
 	@RequestMapping(path = "/studentLogin", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
 
 		StudentLogin log = checkCookie(request);
 		if (log == null) {
 			modelMap.put("studentLoginForm", new StudentLogin());
-			return "studentLogin";
+			return "student/login";
 		}   
 		else {  
 			if(this.adminService.studentLogin(log.getEmail(), log.getPassword())){
@@ -65,7 +40,7 @@ public class StudentLoginController {
 			} else {
 				modelMap.put("error", "invalid login from cookie");
 				System.out.println("Invalid login from cookie");
-				return "studentLogin";
+				return "student/login";
 			}
 		}       
 	}
@@ -96,7 +71,7 @@ public class StudentLoginController {
 		{
 			System.out.println("Invalid login not from cookie");
 			modelMap.put("error", "Invalid login not from cookie");
-			return "studentLogin";
+			return "student/login";
 		}
 	}
 
@@ -113,7 +88,7 @@ public class StudentLoginController {
 				response.addCookie(cookie);
 			}
 		}
-		return "studentLogin";
+		return "student/login";
 	}
 
 	public StudentLogin checkCookie(HttpServletRequest request)  {

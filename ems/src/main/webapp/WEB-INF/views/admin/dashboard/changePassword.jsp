@@ -16,6 +16,7 @@
 </style>
 <body>
 	<div class="container">
+		<div class="text-center"><h1>Change Password</h1></div>
 			<form action="addQuestionForm" method="get">
 				<div class="form-group">
 					<label>Enter Old Password</label> <input type="text"

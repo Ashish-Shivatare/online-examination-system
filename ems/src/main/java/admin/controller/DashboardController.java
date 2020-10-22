@@ -21,13 +21,13 @@ public class DashboardController {
 		this.exam(model);
 		this.getDonutChart(model);
 		this.getBarChart(model);
-		return "dashboard";
+		return "admin/dashboard";
 	}
 	
 	@RequestMapping(path = "/changePassword")
 	public String myAccount() {
 		System.out.println("ChangePassword Contoller");
-		return "changePassword";
+		return "admin/dashboard/changePassword";
 	}
 	
 	public String exam(Model model) {
@@ -46,7 +46,7 @@ public class DashboardController {
 		model.addAttribute("totalQuestions", totalQueCount);
 		model.addAttribute("totalPass", totalPassStudents);
 		
-		return "dashboard";
+		return "admin/dashboard";
 	}
 
 	public String getDonutChart(Model model) {
@@ -64,7 +64,7 @@ public class DashboardController {
         model.addAttribute("donutValueArray",valueList);
         model.addAttribute("donutLabelArray",labelList);
      
-		return "dashboard";
+		return "admin/dashboard";
 	}
 	
 	public String getBarChart(Model model) {
@@ -82,6 +82,6 @@ public class DashboardController {
         model.addAttribute("failedValueArray",failedValueList);
         model.addAttribute("totalValueArray", totalValueList);
      
-		return "dashboard";
+		return "admin/dashboard";
 	}
 }

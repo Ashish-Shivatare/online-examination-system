@@ -22,7 +22,7 @@ public class AdminLoginController {
 		Account log = checkCookie(request);
 		if (log == null) {
 			modelMap.put("loginForm", new Account());
-			return "login";
+			return "admin/login";
 		}   
 		else {  
 			AccountModel accountModel = new AccountModel();
@@ -32,7 +32,7 @@ public class AdminLoginController {
 			} else {
 				modelMap.put("error", "invalid login from cookie");
 				System.out.println("Invalid login from cookie");
-				return "login";
+				return "admin/login";
 			}
 		}       
 	}
@@ -59,7 +59,7 @@ public class AdminLoginController {
 		{
 			System.out.println("Invalid login not from cookie");
 			modelMap.put("error", "Invalid login not from cookie");
-			return "login";
+			return "admin/login";
 		}
 	}
 
@@ -76,7 +76,7 @@ public class AdminLoginController {
 				response.addCookie(cookie);
 			}
 		}
-		return "login";
+		return "admin/login";
 	}
 
 	public Account checkCookie(HttpServletRequest request)  {

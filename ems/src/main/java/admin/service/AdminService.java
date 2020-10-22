@@ -8,7 +8,6 @@ import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
-import admin.model.User;
 
 @Service
 public class AdminService {
@@ -56,12 +55,18 @@ public class AdminService {
 			this.adminDaoImpl.saveAnswer(answer);
 		}
 		
+		
 		public List<Answer> getAnswer() {
 			return this.adminDaoImpl.getAllAnswer();
 		}
 		
-		public void createUser(User user) {
-			this.adminDaoImpl.saveUser(user);
+//		public void createUser(User user) {
+//			this.adminDaoImpl.saveUser(user);
+//		}
+		
+		public void createStudent(Student student) {
+			System.out.println(student);
+			this.adminDaoImpl.saveStudent(student);
 		}
 		
 		public boolean findEmail(String email){
@@ -71,6 +76,7 @@ public class AdminService {
 		public boolean studentLogin(String email, String password){
 			return this.adminDaoImpl.searchUser(email, password);
 		}
+
 		
 		public void updateUserDetails(String email) {
 			this.adminDaoImpl.updateUser(email);
@@ -78,5 +84,9 @@ public class AdminService {
 		
 		public boolean getExamAttempt(String email, String password){
 			return this.adminDaoImpl.examAttempt(email, password);
+		}
+		
+		public void saveFinalSubmission() {
+			this.adminDaoImpl.saveFinalStudent();
 		}
 }

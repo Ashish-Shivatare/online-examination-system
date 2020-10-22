@@ -2,13 +2,11 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" />
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
 <title>Exam Over</title>
 </head>
@@ -41,7 +39,7 @@
 			<h3>
 				<a class="dropdown-item"
 					href="${pageContext.request.contextPath}/studentLogout"
-					role="button">Click To Logout From DashBoard</a>
+					role="button">Click to Logout From DashBoard</a>
 			</h3>
 		</div>
 	</div>
