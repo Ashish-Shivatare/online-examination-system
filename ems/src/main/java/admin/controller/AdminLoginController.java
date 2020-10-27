@@ -31,7 +31,6 @@ public class AdminLoginController {
 				return "redirect:dashboard";
 			} else {
 				modelMap.put("error", "invalid login from cookie");
-				System.out.println("Invalid login from cookie");
 				return "admin/login";
 			}
 		}       
@@ -57,7 +56,6 @@ public class AdminLoginController {
 		}
 		else
 		{
-			System.out.println("Invalid login not from cookie");
 			modelMap.put("error", "Invalid login not from cookie");
 			return "admin/login";
 		}

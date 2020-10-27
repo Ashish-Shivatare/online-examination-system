@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import admin.model.Answer;
 import admin.model.Question;
+import admin.model.StudentAnswer;
 import admin.service.AdminService;
 
 @Controller
@@ -20,6 +21,7 @@ public class ExamFinishController {
 	@RequestMapping(value="/studentDashboard" ,method = RequestMethod.GET)
 	public String finishExam(Model model) {
 		this.adminService.saveFinalSubmission();
+		
 		List<Answer> answer  = this.adminService.getAnswer();
 		int solvedQuestions = 0;
 		int correctAnswers  = 0;
@@ -39,7 +41,7 @@ public class ExamFinishController {
 		}
 		
 		incorrectAnswers = solvedQuestions - correctAnswers;
-		if(correctAnswers > 10)
+		if(correctAnswers >= 10)
 			status = "Pass";
 		else
 			status = "Failed";
@@ -48,7 +50,13 @@ public class ExamFinishController {
 		model.addAttribute("totalCorrectAnswer", correctAnswers);
 		model.addAttribute("totalIncorrectAnswer", incorrectAnswers);
 		model.addAttribute("status", status);
-	
+		
+		StudentAnswer studentAnswer = new StudentAnswer();
+		studentAnswer.setTotalSolvedQuestion(solvedQuestions);
+		studentAnswer.setCorrectAnswerCount(correctAnswers);
+		studentAnswer.setIncorrectAnswerCount(incorrectAnswers);
+		studentAnswer.setStatus(status);
+		this.adminService.saveStudentAnswers(studentAnswer);
 		return "student/dashboard";    
 	}
 }

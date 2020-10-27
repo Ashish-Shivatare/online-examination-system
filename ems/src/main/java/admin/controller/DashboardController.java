@@ -26,7 +26,6 @@ public class DashboardController {
 	
 	@RequestMapping(path = "/changePassword")
 	public String myAccount() {
-		System.out.println("ChangePassword Contoller");
 		return "admin/dashboard/changePassword";
 	}
 	

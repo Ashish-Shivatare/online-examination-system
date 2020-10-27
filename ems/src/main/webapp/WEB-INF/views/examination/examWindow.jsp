@@ -80,10 +80,11 @@
 
 		</div>
 		<div class="col show-question">
-			<h6 id="showQuestion">Showing question <span id="questionNumber"><c:out value="${questionNumber}" /></span> of <c:out value="${totalQuestions}" /></h6>
+			<h6 id="showQuestion">Showing question <span id="showQuestionNo"><c:out value="${questionNumber}" /></span> of <c:out value="${totalQuestions}" /></h6>
 		</div>
 	</div>
-	<script type="text/javascript"> var queId = ${que.id} </script>
+	<script type="text/javascript"> var queId = ${que.id}; var queOptions = '${que.questionOption}'; var queType = '${que.questionType}'; 
+	</script>
 	<script src="<c:url value="/resources/js/nextquestion.js"/>"></script>
 	<script src="<c:url value="/resources/js/exam.js"/>"></script>
 </body>

@@ -8,6 +8,7 @@ import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
+import admin.model.StudentAnswer;
 
 @Service
 public class AdminService {
@@ -27,12 +28,16 @@ public class AdminService {
 			return this.adminDaoImpl.getQuestionTypes();
 		}
 		
-		public int createQuestionType(QuestionType questionType) {
-			return this.adminDaoImpl.saveQuestionType(questionType);
+		public void createQuestionType(QuestionType questionType) {
+			this.adminDaoImpl.saveQuestionType(questionType);
 		}
 		
-		public int createQuestion(Question question) {
-			return this.adminDaoImpl.saveQuestion(question);
+		public void deleteQuestionType(int questionId) {
+			this.adminDaoImpl.deleteQuestionType(questionId);
+		}
+		
+		public void createQuestion(Question question) {
+			this.adminDaoImpl.saveQuestion(question);
 		}
 		
 		public void updateStudentDetails(Student student) {
@@ -88,5 +93,13 @@ public class AdminService {
 		
 		public void saveFinalSubmission() {
 			this.adminDaoImpl.saveFinalStudent();
+		}
+		
+		public void saveStudentAnswers(StudentAnswer studentAnswer) {
+			this.adminDaoImpl.studentAnswers(studentAnswer);
+		}
+		
+		public List<StudentAnswer> getStudentAnswers(){
+			return this.adminDaoImpl.getAllStudentAnswer();
 		}
 }

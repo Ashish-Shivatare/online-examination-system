@@ -1,7 +1,6 @@
 package admin.validator;
 
 import java.util.regex.Pattern;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -24,6 +23,16 @@ public class StudentValidator implements Validator {
 
 		ValidationUtils.rejectIfEmpty(err, "name", "student.name.empty");
 		ValidationUtils.rejectIfEmpty(err, "email", "student.email.empty");
+		ValidationUtils.rejectIfEmpty(err, "mobileNo", "student.mobileNo.empty");
+		ValidationUtils.rejectIfEmpty(err, "higherEducation", "student.higherEducation.empty");
+		ValidationUtils.rejectIfEmpty(err, "gender", "student.gender.empty");
+		ValidationUtils.rejectIfEmpty(err, "dob", "student.dob.empty");
+		ValidationUtils.rejectIfEmpty(err, "address", "student.address.empty");
+		ValidationUtils.rejectIfEmpty(err, "city", "student.city.empty");
+		ValidationUtils.rejectIfEmpty(err, "country", "student.country.empty");
+		ValidationUtils.rejectIfEmpty(err, "panCard", "student.panCard.empty");
+		ValidationUtils.rejectIfEmpty(err, "higherEducationCertificate", "student.higherEducationCertificate.empty");
+		ValidationUtils.rejectIfEmpty(err, "registrationDate", "student.registrationDate.empty");
 		ValidationUtils.rejectIfEmpty(err, "password", "student.password.empty");
 		ValidationUtils.rejectIfEmpty(err, "confirmPassword", "student.confirmPassword.empty");
 		ValidationUtils.rejectIfEmpty(err, "agree", "student.agree.empty");

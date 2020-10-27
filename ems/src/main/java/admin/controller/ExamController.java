@@ -1,5 +1,4 @@
 package admin.controller;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +42,7 @@ public class ExamController {
 	public @ResponseBody Question getAnswers(@RequestBody Answer answer, Model model) {
 		if(answer.getSelectedAnswer() != null && answer.getSelectedAnswer().size() > 0 ) {
 			this.adminService.addAnswer(answer);
+			System.out.println(answer);
 		}
 		Question question = this.getNextQuestion(model);
 		return question;    

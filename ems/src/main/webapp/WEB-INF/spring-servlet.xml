@@ -75,7 +75,7 @@
 				<value>admin.model.Question</value>
 				<value>admin.model.Answer</value>
 				<value>admin.model.Student</value>
-				<value>admin.model.User</value>
+				<value>admin.model.StudentAnswer</value>
 			</list>
 		</property>
 	</bean>

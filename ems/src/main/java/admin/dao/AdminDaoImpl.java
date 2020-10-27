@@ -11,6 +11,7 @@ import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
+import admin.model.StudentAnswer;
 
 @Repository
 public class AdminDaoImpl {
@@ -20,7 +21,7 @@ public class AdminDaoImpl {
 	
 	Student st = new Student();
 	ArrayList<Answer> list1 = new ArrayList<Answer>();
-	int checkId;
+	int checkId = 0;
 
 	public List<Exam> getAll() {
 		List<Exam> list=new ArrayList<Exam>();  
@@ -29,15 +30,13 @@ public class AdminDaoImpl {
 	}
 
 	@Transactional
-	public int saveQuestion(Question question) {
-		int id = (Integer) this.hibernateTemplate.save(question);
-		return id;
+	public void saveQuestion(Question question) {
+		this.hibernateTemplate.saveOrUpdate(question);
 	}
 
 	@Transactional
-	public int saveQuestionType(QuestionType questionType) {
-		int id = (Integer) this.hibernateTemplate.save(questionType);
-		return id;
+	public void saveQuestionType(QuestionType questionType) {
+		this.hibernateTemplate.saveOrUpdate(questionType);
 	}
 
 	public List<QuestionType> getQuestionTypes() {
@@ -45,7 +44,11 @@ public class AdminDaoImpl {
 		list = this.hibernateTemplate.loadAll(QuestionType.class);
 		return list;
 	}
-
+	@Transactional
+	public void deleteQuestionType(int id) {
+		QuestionType questionType = this.hibernateTemplate.load(QuestionType.class, id);
+		this.hibernateTemplate.delete(questionType);
+	}
 
 	public List<Student> getStudentInformation() {
 		List<Student> studentList = new ArrayList<Student>();  
@@ -55,9 +58,8 @@ public class AdminDaoImpl {
 
 	@Transactional
 	public void updateStudent(Student student) {
-		this.hibernateTemplate.update(student);
+		//this.hibernateTemplate.update(student);
 	}
-
 
 	public Student getStudent(int studentId) {
 		return this.hibernateTemplate.get(Student.class, studentId);
@@ -75,11 +77,6 @@ public class AdminDaoImpl {
 		return que;
 	}
 
-	//	@Transactional
-	//	public void saveAnswer(Answer answer) {
-	//		this.hibernateTemplate.saveOrUpdate(answer);
-	//	}
-
 	@Transactional
 	public void saveAnswer(Answer answer) {
 		list1.add(answer);
@@ -87,7 +84,6 @@ public class AdminDaoImpl {
 
 	@Transactional
 	public void saveFinalStudent() {
-		System.out.println(list1+ " This is list "+ checkId);
 		if(st.getEmail() != null) {
 			st.setAnswer(list1);
 			this.saveStudent(st);
@@ -96,86 +92,10 @@ public class AdminDaoImpl {
 
 	public List<Answer> getAllAnswer() {
 		Student st1 = this.hibernateTemplate.load(Student.class, checkId);
-		//System.out.println(st1 + "  Get all answers");
 		List<Answer> list=new ArrayList<Answer>();  
 		list.addAll(st1.getAnswer());
 		return list;
 	}
-
-	//	public List<Answer> getAllAnswer() {
-	//		List<Answer> list=new ArrayList<Answer>();  
-	//		list = this.hibernateTemplate.loadAll(Answer.class);
-	//		return list;
-	//	}
-
-	//	@Transactional
-	//	public void saveUser(User user) {
-	//		this.hibernateTemplate.saveOrUpdate(user);
-	//	}
-
-	//	public boolean searchEmail(String email) {
-	//        boolean isValidUser = false;
-	//		
-	//		User user = new User();
-	//	    user.setEmail(email);
-	//
-	//	    List<User> existUserObj = this.hibernateTemplate.findByExample(user);
-	//	    if(existUserObj != null && existUserObj.size() > 0){
-	//	    	isValidUser = true;
-	//	    }
-	//	    return isValidUser;
-	//    }
-	//	
-	//	public boolean searchUser(String email, String password) {
-	//		boolean isValidUser = false;
-	//
-	//		User user = new User();
-	//		user.setEmail(email);
-	//		user.setPassword(password);
-	//
-	//		List<User> existUserObj = this.hibernateTemplate.findByExample(user);
-	//
-	//		if(existUserObj != null && existUserObj.size() > 0)
-	//		{
-	//			isValidUser = true;
-	//		}
-	//		return isValidUser;
-	//	}
-	//	
-	//	@Transactional
-	//	public void updateUser(String email) {
-	//		int id = 0;
-	//		User findUser = new User();
-	//	    findUser.setEmail(email);
-	//	    
-	//	    List<User> existUserObj = this.hibernateTemplate.findByExample(findUser);
-	//	    for (User u : existUserObj) {
-	//	    	id = u.getId();
-	//		}
-	//	    User user = this.hibernateTemplate.load(User.class, id);
-	//	    user.setExamAttempt("true");
-	//	    this.saveUser(user);
-	//	}
-	//	
-	//	public boolean examAttempt(String email, String password) {
-	//		boolean isExamAttempt = false;
-	//		
-	//		User user = new User();
-	//		user.setEmail(email);
-	//		user.setPassword(password);
-	//
-	//		List<User> existUserObj = this.hibernateTemplate.findByExample(user);
-	//
-	//		if(existUserObj != null && existUserObj.size() > 0)
-	//		{
-	//			for (User u : existUserObj) {
-	//				if(u.getExamAttempt()!= null && u.getExamAttempt().equals("true")) {
-	//					isExamAttempt = true;
-	//				}
-	//			}
-	//		}
-	//		return isExamAttempt;
-	//	}
 
 	@Transactional
 	public void saveStudent(Student student) {
@@ -206,7 +126,6 @@ public class AdminDaoImpl {
 		for (Student s : existUserObj) {
 			checkId = s.getId();
 		}
-		System.out.println(checkId);
 		list1.clear();
 		if(existUserObj != null && existUserObj.size() > 0)
 		{
@@ -217,14 +136,6 @@ public class AdminDaoImpl {
 
 	@Transactional
 	public void updateUser(String email) {
-		int id = 0;
-		Student findStudent = new Student();
-		findStudent.setEmail(email);
-
-		List<Student> existUserObj = this.hibernateTemplate.findByExample(findStudent);
-//		for (Student u : existUserObj) {
-//			id = u.getId();
-//		}
 		Student student = this.hibernateTemplate.load(Student.class, checkId);
 		student.setExamAttempt("true");
 		st = student;
@@ -248,5 +159,20 @@ public class AdminDaoImpl {
 			}
 		}
 		return isExamAttempt;
+	}
+	
+	@Transactional
+	public void studentAnswers(StudentAnswer studentAnswer) {
+		studentAnswer.setStudentId(checkId);
+		studentAnswer.setStudentName(st.getName());
+		studentAnswer.setStudentEmail(st.getEmail());
+		studentAnswer.setStudentMobileNo(st.getMobileNo());
+		this.hibernateTemplate.save(studentAnswer);
+	}
+	
+	public List<StudentAnswer> getAllStudentAnswer(){
+		List<StudentAnswer> answerList = new ArrayList<StudentAnswer>(); 
+		answerList = this.hibernateTemplate.loadAll(StudentAnswer.class);
+		return answerList;
 	}
 }
