@@ -14,6 +14,7 @@ import admin.model.Student;
 import admin.model.StudentAnswer;
 
 @Repository
+@Transactional
 public class AdminDaoImpl {
 
 	@Autowired
@@ -29,12 +30,15 @@ public class AdminDaoImpl {
 		return list;
 	}
 
-	@Transactional
 	public void saveQuestion(Question question) {
 		this.hibernateTemplate.saveOrUpdate(question);
 	}
 
-	@Transactional
+	public void deleteQuestion(int id) {
+		Question question = this.hibernateTemplate.load(Question.class, id);
+		this.hibernateTemplate.delete(question);
+	}
+
 	public void saveQuestionType(QuestionType questionType) {
 		this.hibernateTemplate.saveOrUpdate(questionType);
 	}
@@ -44,7 +48,7 @@ public class AdminDaoImpl {
 		list = this.hibernateTemplate.loadAll(QuestionType.class);
 		return list;
 	}
-	@Transactional
+
 	public void deleteQuestionType(int id) {
 		QuestionType questionType = this.hibernateTemplate.load(QuestionType.class, id);
 		this.hibernateTemplate.delete(questionType);
@@ -56,9 +60,8 @@ public class AdminDaoImpl {
 		return studentList;
 	}
 
-	@Transactional
 	public void updateStudent(Student student) {
-		//this.hibernateTemplate.update(student);
+		this.hibernateTemplate.update(student);
 	}
 
 	public Student getStudent(int studentId) {
@@ -77,12 +80,10 @@ public class AdminDaoImpl {
 		return que;
 	}
 
-	@Transactional
 	public void saveAnswer(Answer answer) {
 		list1.add(answer);
 	}
 
-	@Transactional
 	public void saveFinalStudent() {
 		if(st.getEmail() != null) {
 			st.setAnswer(list1);
@@ -97,7 +98,6 @@ public class AdminDaoImpl {
 		return list;
 	}
 
-	@Transactional
 	public void saveStudent(Student student) {
 		this.hibernateTemplate.saveOrUpdate(student);
 	}
@@ -134,7 +134,6 @@ public class AdminDaoImpl {
 		return isValidUser;
 	}
 
-	@Transactional
 	public void updateUser(String email) {
 		Student student = this.hibernateTemplate.load(Student.class, checkId);
 		student.setExamAttempt("true");
@@ -161,7 +160,6 @@ public class AdminDaoImpl {
 		return isExamAttempt;
 	}
 	
-	@Transactional
 	public void studentAnswers(StudentAnswer studentAnswer) {
 		studentAnswer.setStudentId(checkId);
 		studentAnswer.setStudentName(st.getName());

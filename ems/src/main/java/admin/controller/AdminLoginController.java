@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import admin.model.Account;
-import admin.model.AccountModel;
+import admin.model.AdminLogin;
+import admin.model.AdminLoginCredentials;
 
 @Controller
 public class AdminLoginController {
@@ -19,14 +19,14 @@ public class AdminLoginController {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
 
-		Account log = checkCookie(request);
+		AdminLogin log = checkCookie(request);
 		if (log == null) {
-			modelMap.put("loginForm", new Account());
+			modelMap.put("loginForm", new AdminLogin());
 			return "admin/login";
 		}   
 		else {  
-			AccountModel accountModel = new AccountModel();
-			if(accountModel.login(log.getUsername(), log.getPassword())){
+			AdminLoginCredentials adminLogin = new AdminLoginCredentials();
+			if(adminLogin.login(log.getUsername(), log.getPassword())){
 				session.setAttribute("username", log.getUsername());
 				return "redirect:dashboard";
 			} else {
@@ -36,19 +36,18 @@ public class AdminLoginController {
 		}       
 	}
 
-
 	@RequestMapping(path = "/loginForm", method = RequestMethod.POST)
-	public String loginRequestHandler(@ModelAttribute("loginForm") Account account, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response){
+	public String loginRequestHandler(@ModelAttribute("loginForm") AdminLogin adminLogin, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response){
 		
-		AccountModel accountModel = new AccountModel();
-		if(accountModel.login(account.getUsername(), account.getPassword())){
-			session.setAttribute("username", account.getUsername());
+		AdminLoginCredentials loginCredentials = new AdminLoginCredentials();
+		if(loginCredentials.login(adminLogin.getUsername(), adminLogin.getPassword())){
+			session.setAttribute("username", adminLogin.getUsername());
 			
 			if(request.getParameter("remember")!=null){
-				Cookie ckName = new Cookie("username", account.getUsername());
+				Cookie ckName = new Cookie("username", adminLogin.getUsername());
 				ckName.setMaxAge(3600);
 				response.addCookie(ckName);
-				Cookie ckPassword = new Cookie("password", account.getPassword() );
+				Cookie ckPassword = new Cookie("password", adminLogin.getPassword() );
 				ckPassword.setMaxAge(3600);
 				response.addCookie(ckPassword);
 			}
@@ -77,9 +76,9 @@ public class AdminLoginController {
 		return "admin/login";
 	}
 
-	public Account checkCookie(HttpServletRequest request)  {
+	public AdminLogin checkCookie(HttpServletRequest request)  {
 		Cookie[] cookies = request.getCookies();
-		Account account = null;
+		AdminLogin adminLogin = null;
 		String username = "";
 		String password = "";
 		
@@ -92,7 +91,7 @@ public class AdminLoginController {
 			}
 		}
 		if(!username.isEmpty() && !password.isEmpty())
-			account = new Account(username, password);
-		return account;
+			adminLogin = new AdminLogin(username, password);
+		return adminLogin;
 	}
 }

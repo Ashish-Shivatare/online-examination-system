@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import admin.model.Student;
-import admin.service.AdminService;
-//import admin.validator.UserValidator;
+import admin.service.StudentService;
 import admin.validator.StudentValidator;
 
 @Controller
@@ -21,9 +20,9 @@ public class StudentRegistrationController {
 
 	@Autowired
 	private StudentValidator studentValidator;
-	
+
 	@Autowired
-	private AdminService adminService;
+	private StudentService studentService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -45,7 +44,7 @@ public class StudentRegistrationController {
 			return "student/registration";
 		}
 		student.setExamAttempt("false");
-		this.adminService.createStudent(student);
+		this.studentService.createStudent(student);
 		return "redirect:studentLogin";
 	}
 }

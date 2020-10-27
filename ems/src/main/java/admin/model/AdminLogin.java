@@ -1,6 +1,6 @@
 package admin.model;
 
-public class Account {
+public class AdminLogin {
 	private String username;
 	private String password;
 	
@@ -16,13 +16,16 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Account(String username, String password) {
+	
+	public AdminLogin(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
 	}
-	public Account() {
+	
+	public AdminLogin() {
 		super();
 	}
+	
 	
 }

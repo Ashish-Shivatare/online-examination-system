@@ -30,16 +30,12 @@ public class Student {
 	private String higherEducationCertificate;
 	private String registrationDate;
 	
-	//@Column(name="password", nullable = false, updatable = false)
 	private String password;
 	
-	//@Column(name="confirmPassword", nullable = false, updatable = false)
 	private String confirmPassword;
-	
-	//@Column(name="agree", nullable = false, updatable = false)
+
 	private Boolean agree;
 	
-	//@Column(name="examAttempt", nullable = false, updatable = false)
 	private String examAttempt;
 	
 	@ElementCollection

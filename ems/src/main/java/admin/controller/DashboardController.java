@@ -8,14 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import admin.model.Exam;
-import admin.service.AdminService;
+import admin.service.ExamService;
 
 @Controller
 public class DashboardController {
 
 	@Autowired
-	private AdminService adminService;
-
+	private ExamService examService;
+	
 	@RequestMapping(path = "/dashboard")
 	public String dashBoardHome(Model model) {
 		this.exam(model);
@@ -30,7 +30,7 @@ public class DashboardController {
 	}
 	
 	public String exam(Model model) {
-		List<Exam> exam = this.adminService.getExam();
+		List<Exam> exam = this.examService.getExam();
 		int totalRegStudents = 0;
 		int totalQueCount = 0;
 		int totalPassStudents = 0;
@@ -49,7 +49,7 @@ public class DashboardController {
 	}
 
 	public String getDonutChart(Model model) {
-		List<Exam> exam = this.adminService.getExam();
+		List<Exam> exam = this.examService.getExam();
 		System.out.println("DonutChart controller");
 		List<Integer> labelList = new ArrayList<Integer>();
 		List<Integer> valueList = new ArrayList<Integer>();
@@ -67,7 +67,7 @@ public class DashboardController {
 	}
 	
 	public String getBarChart(Model model) {
-		List<Exam> exam = this.adminService.getExam();
+		List<Exam> exam = this.examService.getExam();
 		System.out.println("BarChart controller");
 		List<Integer> passValueList = new ArrayList<Integer>();
 		List<Integer> failedValueList = new ArrayList<Integer>();

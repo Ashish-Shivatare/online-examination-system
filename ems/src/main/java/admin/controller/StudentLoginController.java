@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import admin.model.StudentLogin;
-import admin.service.AdminService;
+import admin.service.ExamService;
+import admin.service.StudentService;
 
 @Controller
 public class StudentLoginController {
-
+	
 	@Autowired
-	private AdminService adminService;
+	private ExamService examService;
+	
+	@Autowired
+	private StudentService studentService;
 
 	@RequestMapping(path = "/studentLogin", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
@@ -29,9 +33,9 @@ public class StudentLoginController {
 			return "student/login";
 		}   
 		else {  
-			if(this.adminService.studentLogin(log.getEmail(), log.getPassword())){
+			if(this.studentService.studentLogin(log.getEmail(), log.getPassword())){
 				session.setAttribute("email", log.getEmail());
-				if(!this.adminService.getExamAttempt(log.getEmail(), log.getPassword())) {
+				if(!this.examService.getExamAttempt(log.getEmail(), log.getPassword())) {
 					return "redirect:exam";
 				}
 				else {
@@ -47,7 +51,7 @@ public class StudentLoginController {
 	@RequestMapping(path = "/studentLoginForm", method = RequestMethod.POST)
 	public String loginRequestHandler(@ModelAttribute StudentLogin studentLogin, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response){
 
-		if(this.adminService.studentLogin(studentLogin.getEmail(), studentLogin.getPassword())){
+		if(this.studentService.studentLogin(studentLogin.getEmail(), studentLogin.getPassword())){
 			session.setAttribute("email", studentLogin.getEmail());
 
 			if(request.getParameter("remember")!=null){
@@ -58,8 +62,8 @@ public class StudentLoginController {
 				ckPassword.setMaxAge(3600);
 				response.addCookie(ckPassword);
 			}
-			if(!this.adminService.getExamAttempt(studentLogin.getEmail(), studentLogin.getPassword())) {
-				this.adminService.updateUserDetails(studentLogin.getEmail());
+			if(!this.examService.getExamAttempt(studentLogin.getEmail(), studentLogin.getPassword())) {
+				this.studentService.updateUserDetails(studentLogin.getEmail());
 				return "redirect:exam";
 			}
 			else {

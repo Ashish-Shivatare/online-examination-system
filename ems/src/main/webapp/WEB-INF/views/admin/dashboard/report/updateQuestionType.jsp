@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="h1 text-center">Update Question Type</div>
 		<div id="formDiv">
-			<form action="${pageContext.request.contextPath}/questionTypeUpdate"
+			<form action="${pageContext.request.contextPath}/questionType/update"
 				method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" id="questionId" name="id"
@@ -35,7 +35,6 @@
 				</div>
 				<div class="text-center">
 					<button class="btn btn-warning" type="submit">Update</button>
-					<a role="button" href="${pageContext.request.contextPath}/questionTypeDelete/${questionId}" class="btn btn-danger">Delete</a>
 				</div>
 			</form>
 		</div>

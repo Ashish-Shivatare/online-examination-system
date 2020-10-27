@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import admin.model.Answer;
 import admin.model.Question;
-import admin.service.AdminService;
+import admin.service.DashboardService;
 
 @Controller
 @RequestMapping("exam")
 public class ExamController {
 
 	@Autowired
-	private AdminService adminService;
+	private DashboardService dashboardService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getExamWindow(Model model) {
@@ -31,7 +31,7 @@ public class ExamController {
 
 	public Question getNextQuestion(Model model) {
 		int r = getRandomInteger(1, 30);
-		Question question = this.adminService.getQuestion(r);
+		Question question = this.dashboardService.getQuestion(r);
 		model.addAttribute("que", question);
 		model.addAttribute("questionNumber", 1);
 		model.addAttribute("totalQuestions", 30);
@@ -41,7 +41,7 @@ public class ExamController {
 	@RequestMapping(value = "question", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Question getAnswers(@RequestBody Answer answer, Model model) {
 		if(answer.getSelectedAnswer() != null && answer.getSelectedAnswer().size() > 0 ) {
-			this.adminService.addAnswer(answer);
+			this.dashboardService.addAnswer(answer);
 			System.out.println(answer);
 		}
 		Question question = this.getNextQuestion(model);

@@ -13,17 +13,21 @@ import admin.model.Answer;
 import admin.model.Question;
 import admin.model.Student;
 import admin.model.StudentAnswer;
-import admin.service.AdminService;
+import admin.service.DashboardService;
+import admin.service.StudentService;
 
 @Controller
 public class AdminStudentController {
 
 	@Autowired
-	private AdminService adminservice;
-
+	private DashboardService dashboardService;
+	
+	@Autowired
+	private StudentService studentService;
+	
 	@RequestMapping(path = "/studentInformation")
 	public String studentInfo(Model model) {
-		List<Student> studentList = this.adminservice.getStudent();
+		List<Student> studentList = this.studentService.getStudent();
 		model.addAttribute("studentInfoList", studentList);
 		
 		return "admin/dashboard/studentInfo";
@@ -31,7 +35,7 @@ public class AdminStudentController {
 
 	@RequestMapping(path = "/update/{studentId}")
 	public String updateStudentInfo(@PathVariable("studentId") int studentId, Model model) {
-		Student student = this.adminservice.getStudentDetails(studentId);
+		Student student = this.dashboardService.getStudentDetails(studentId);
 		model.addAttribute("student", student);
 		
 		return "admin/dashboard/updateStudent";
@@ -41,14 +45,14 @@ public class AdminStudentController {
 	public String updateStudent(@ModelAttribute Student student) {
 		List<Student> list= new ArrayList<Student>(); 
 		list.add(student);
-		this.adminservice.updateStudentDetails(student);
+		this.dashboardService.updateStudentDetails(student);
 		
 		return "redirect:studentInformation";
 	}
 
 	@RequestMapping(path = "/studentReport")
 	public String studentReport(Model model) {
-		List<StudentAnswer> allStudentList = this.adminservice.getStudentAnswers(); 
+		List<StudentAnswer> allStudentList = this.studentService.getStudentAnswers(); 
 		model.addAttribute("studentReportList", allStudentList);
 		
 		return "admin/dashboard/reports";
@@ -56,11 +60,11 @@ public class AdminStudentController {
 	
 	@RequestMapping(path = "/studentReport/paper/{studentId}")
 	public String questionPaper(@PathVariable("studentId") int studentId, Model model) {
-		Student student = this.adminservice.getStudentDetails(studentId);
+		Student student = this.dashboardService.getStudentDetails(studentId);
 		model.addAttribute("student", student);
 		List<Question> questionList = new ArrayList<Question>();
 		for (Answer ans : student.getAnswer()) {
-			Question ques = this.adminservice.getQuestion(ans.getQuestionId());
+			Question ques = this.dashboardService.getQuestion(ans.getQuestionId());
 			questionList.add(ques);
 		}
 		model.addAttribute("questionList", questionList);

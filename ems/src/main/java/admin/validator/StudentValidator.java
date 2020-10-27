@@ -8,12 +8,13 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import admin.model.Student;
-import admin.service.AdminService;
+import admin.service.StudentService;
 
 @Component
 public class StudentValidator implements Validator {
+	
 	@Autowired
-	private AdminService adminService;
+	private StudentService studentService;
 	
 	public boolean supports(Class<?> clazz) {
 		return Student.class.equals(clazz);
@@ -38,7 +39,7 @@ public class StudentValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(err, "agree", "student.agree.empty");
 		Student student = (Student) obj;
 		
-		Boolean userExist = this.adminService.findEmail(student.getEmail());
+		Boolean userExist = this.studentService.findEmail(student.getEmail());
 		
 		if(userExist)
 		{
