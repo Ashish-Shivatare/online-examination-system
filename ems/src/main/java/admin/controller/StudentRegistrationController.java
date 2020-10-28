@@ -19,11 +19,11 @@ import admin.validator.StudentValidator;
 public class StudentRegistrationController {
 
 	@Autowired
-	private StudentValidator studentValidator;
-
-	@Autowired
 	private StudentService studentService;
 
+	@Autowired
+	private StudentValidator studentValidator;
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.addValidators(studentValidator);

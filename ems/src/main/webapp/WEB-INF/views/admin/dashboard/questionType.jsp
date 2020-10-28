@@ -10,8 +10,20 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
+body {
+	background: linear-gradient(120grad, #643986, #98aed5);
+	font-family: "Roboto";
+	color: white;
+	font-size: 17px;
+	height:auto; 
+}
+.btn-outline-primary{
+ color: #643986;
+ background-color: white;
+}
 .container {
-	padding: 50px;
+	padding: 60px;
+	padding-top: 80px;
 }
 .question-form{
 	padding: 20px;
@@ -21,13 +33,14 @@
 <body>
 	<div class="container">
 		<div class="question-form">
-			<form action="questionTypeForm" method="get">
+			<form action="questionTypeForm" method="post">
 				<div class="form-group text-center">
-					<label>Add Question Type</label> <input type="text" name="questionType"
-						class="form-control">
+					<h1><label>Add Question Type</label></h1> <input type="text" name="questionType"
+						class="form-control"/>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<a role="button" class="btn btn-outline-primary" href="dashboard">Back</a>
+					<button type="submit" class="btn btn-outline-primary">Submit</button>
 				</div>
 			</form>
 		</div>

@@ -17,10 +17,10 @@ for (var j = 0; j < ab.length; j++) {
 	}
 }
 
-function getAnswerButton(value){
-	this.answerButton = value;
-	for (var k = 0; i < ca.length; k++) {
-		ca[k].type = value;
+function getAnswerButton(values){
+	this.answerButton = values;
+	for (var k = 0; k < ca.length; k++) {
+		ca[k].type = values;
 	}
 }
 
@@ -39,7 +39,6 @@ function add(type, id, name) {
 	correctOption.id = correctAns + id;
 	correctOption.className = "form-check-input";
 	correctOption.value = id;
-	correctOption.setAttribute("onclick","getCorrectAnswer()");
 	label.id = id;
 	label.innerHTML = id;
 	label.className = "form-check-label";
@@ -54,5 +53,14 @@ function add(type, id, name) {
 document.getElementById("addOption").onclick = function() {
 	add(type, id, name);
 	id = id + 1;
+};
+
+document.getElementById("deleteOption").onclick = function() {
+	var dd = document.getElementsByName("questionOption");
+	if(dd.length > 2){
+		var option = document.getElementById("option"+dd.length);
+		option.remove();
+		id--;
+	}
 };
 

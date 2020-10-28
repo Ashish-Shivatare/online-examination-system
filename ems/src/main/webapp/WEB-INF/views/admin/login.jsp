@@ -26,7 +26,7 @@
 	<div class="container">
 		<form action="loginForm" method="post">
 			<div class="form-group">
-				<h4 id="signIn">Sign In</h4>
+				<h4 id="signIn">Admin Sign In</h4>
 			</div>
 
 			<div class="form-group">
@@ -42,7 +42,6 @@
 			<div id="checkbox" class="form-group">
 				<label><input name="remember" type="checkbox" /><span></span>
 					Remember Me</label>
-				<h6 id="forgotPassword">Forgot pwd?</h6>
 			</div>
 
 			<div class="form-group">
@@ -56,8 +55,8 @@
 			<br />
 			<div class="form-group">
 				<h6 id="accountRegister">
-					Don't have an account?<a href="studentLogin"><span id="signUp">Sign
-							Up</span></a>
+					Click Here For Student Login<a href="studentLogin"><span id="signUp">
+							 Sign In</span></a>
 				</h6>
 			</div>
 		</form>

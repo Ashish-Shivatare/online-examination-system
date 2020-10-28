@@ -5,7 +5,7 @@
 <head>
 <title>dashboard</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -66,18 +66,37 @@
 			class="dashboard-img"
 			src="<c:url value="/resources/image/dashboard.svg"/>" /> <span
 			id="dashboardText">Dashboard</span>
-		</a> <a class="nav-link" href="questionType" role="button"> <i
-			class="material-icons management-option-img">widgets</i> <span
-			id="managementOption">Question Type</span>
-		</a> <a class="nav-link" href="addQuestion" role="button"> <img
+		</a> 
+		
+		<div class="dropdown">
+			<a class="nav-link" href="#" role="button" data-toggle="dropdown"> <i
+				class="material-icons management-option-img">widgets</i> <span
+				id="managementOption">Question Type</span></a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="questionType">Add Question Type</a>
+				 <a	class="dropdown-item" href="questionType/report">Report</a> 
+			</div>
+		</div>
+
+
+		<div class="dropdown">
+		<a class="nav-link" href="addQuestion" role="button" data-toggle="dropdown"> <img
 			class="add-question-img"
 			src="<c:url value="/resources/image/bullseye-grey.svg"/>" /> <span
 			id="addQuestion">Add Questions</span>
-		</a> <a class="nav-link" href="studentInformation" role="button"> <i
+		</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="addQuestion">Add Question</a>
+				 <a	class="dropdown-item" href="addQuestion/report">Report</a> 
+			</div>
+		</div>
+			
+			
+		 <a class="nav-link" href="studentInformation" role="button"> <i
 			class="fas fa-table"></i> <span id="studentDetails">Student
 				Details</span>
-		</a> <a class="nav-link" href="studentReport" role="button"> <svg width="1em"
-				height="1em" viewBox="0 0 16 16" class="report-img"
+		</a> <a class="nav-link" href="studentReport" role="button"> <svg
+				width="1em" height="1em" viewBox="0 0 16 16" class="report-img"
 				fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
 					d="M4 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5.707A1 1 0 0 0 13.707 5L10 1.293A1 1 0 0 0 9.293 1H4zm5 1v3a1 1 0 0 0 1 1h3L9 2z" />

@@ -8,13 +8,61 @@
 <meta charset="ISO-8859-1">
 <title>Student Report</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
+body {
+	background: -webkit-linear-gradient(left, #643986, #98aed5);
+	background: linear-gradient(to right, #643986, #98aed5);
+	font-family: 'Roboto', sans-serif;
+}
+
 .container {
-	padding: 20px;
-	margin: 80px;
+	padding: 0px;
+	padding-top: 80px
+}
+
+}
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+thead {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+tbody {
+	height: 300px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+th {
+	padding: 20px 15px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 15px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 400;
+	font-size: 15px;
+	color: #fff;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+#viewQuestion {
+	color: white;
+}
+
+#viewQuestion:hover {
+	color: blue;
 }
 </style>
 </head>
@@ -46,7 +94,9 @@
 							<td><c:out value="${student.correctAnswerCount}" /></td>
 							<td><c:out value="${student.incorrectAnswerCount}" /></td>
 							<td><c:out value="${student.status}" /></td>
-							<td><a role="button" href="${pageContext.request.contextPath}/studentReport/paper/${student.id}">View Question paper</a></td>
+							<td><a id="viewQuestion" role="button"
+								href="${pageContext.request.contextPath}/studentReport/paper/${student.id}">View
+									Question paper</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

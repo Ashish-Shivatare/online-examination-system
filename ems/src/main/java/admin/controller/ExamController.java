@@ -1,5 +1,8 @@
 package admin.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +21,28 @@ public class ExamController {
 
 	@Autowired
 	private DashboardService dashboardService;
-
+	private int totalQuestionCount;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getExamWindow(Model model) {
+		this.totalQuestions();
 		this.getNextQuestion(model);
+		LocalDate date = LocalDate.now();
+		model.addAttribute("date", date);
 		return "examination/examWindow";    
 	}
 	
 	public static int getRandomInteger(int maximum, int minimum){ 
 		return ((int) (Math.random()*(maximum - minimum))) + minimum; 
 	}
+	
+	public void totalQuestions() {
+		List<Question> questionList = this.dashboardService.getAllQuestion();
+		totalQuestionCount = questionList.size();
+	}
 
 	public Question getNextQuestion(Model model) {
-		int r = getRandomInteger(1, 30);
+		int r = getRandomInteger(1, totalQuestionCount);
 		Question question = this.dashboardService.getQuestion(r);
 		model.addAttribute("que", question);
 		model.addAttribute("questionNumber", 1);
@@ -42,7 +54,6 @@ public class ExamController {
 	public @ResponseBody Question getAnswers(@RequestBody Answer answer, Model model) {
 		if(answer.getSelectedAnswer() != null && answer.getSelectedAnswer().size() > 0 ) {
 			this.dashboardService.addAnswer(answer);
-			System.out.println(answer);
 		}
 		Question question = this.getNextQuestion(model);
 		return question;    

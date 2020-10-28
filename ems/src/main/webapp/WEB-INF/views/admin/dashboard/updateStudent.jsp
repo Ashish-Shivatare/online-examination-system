@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -10,6 +11,22 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
+body {
+	background: linear-gradient(120grad, #643986, #98aed5);
+	font-family: "Roboto";
+	color: white;
+	font-size: 17px;
+}
+.btn-outline-primary {
+	background-color:white;
+	border-color:#643986;
+	color: #643986;
+}
+.btn-outline-warning {
+	background-color:white;
+	border-color:#643986;
+	color: #643986;
+}
 .container {
 	margin: 40px;
 	margin-top: 20px; 
@@ -20,6 +37,9 @@ padding-bottom: 30px;
 }
 .text-center{
 	padding-top: 10px;
+}
+.error{
+	color: red;
 }
 </style>
 </head>
@@ -34,6 +54,7 @@ padding-bottom: 30px;
 		
 			<div class="form-group">
 				<label>Student Name</label> <input type="text" class="form-control" name="name" value="${student.name}">
+				<%-- <form:errors path="name" cssClass="error"/> --%>
 			</div>
 
 			<div class="form-group">
@@ -84,7 +105,7 @@ padding-bottom: 30px;
 			</div>
 			<div class="text-center">
 				<a href="${pageContext.request.contextPath}/studentInformation" class="btn btn-outline-primary">Back</a>
-				<button type="submit" class="btn btn-warning">Update</button>
+				<button type="submit" class="btn btn-outline-warning">Update</button>
 			</div>
 		</form>
 	</div>

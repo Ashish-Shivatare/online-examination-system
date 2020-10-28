@@ -33,7 +33,7 @@
 		<div class="col date-time">
 			<div class="d-flex">
 				<div class="mr-auto p-2">
-					<h4 id="date">Date:</h4>
+					<h4 id="date">Date: <c:out value="${date}" /></h4>
 				</div>
 				<div class="p-2">
 					<h4 id="time">

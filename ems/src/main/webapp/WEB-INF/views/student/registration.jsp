@@ -16,7 +16,7 @@
 	<div class="container">
 		<form:form action="registrationForm" method="post" modelAttribute="student">
 			<div class="form-group">
-				<h4 id="signUp">Sign Up</h4>
+				<h4 id="signUp">Student Sign Up</h4>
 			</div>
 
 			<div class="form-group">

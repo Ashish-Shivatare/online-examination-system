@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -12,12 +13,33 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <style>
+body {
+	background: linear-gradient(120grad, #643986, #98aed5);
+	font-family: "Roboto";
+	color: white;
+	font-size: 17px;
+	height: auto;
+}
+
+.btn-outline-primary {
+	border-color: #643986;
+	color: #643986;
+	background-color: white;
+}
+
+.btn-outline-warning {
+	border-color: #643986;
+	color: #643986;
+	background-color: white;
+}
+
 .h1 {
 	padding: 20px;
 }
 
 .container {
-	padding: 50px;
+	padding: 60px;
+	padding-top: 80px;
 }
 
 .form-control {
@@ -47,16 +69,24 @@ label span {
 }
 
 [type="radio"]:checked+span:before {
-	content: "\2611";
+	content: "\2713";
 	position: absolute;
 	top: -5px;
-	left: -3px;
+	left: 0px;
+}
+
+.error {
+	color: red;
 }
 </style>
 <body>
 	<div class="container">
+		<div class="text-center">
+			<h1>Update Question</h1>
+		</div>
 		<div class="update-question-form">
-			<form action="updateForm" method="post">
+			<form:form action="updateForm" method="post"
+				modelAttribute="updateQuestion">
 				<div class="form-group">
 					<label>Question Id</label> <input type="text" class="form-control"
 						name="id" value="${que.id}" readonly>
@@ -64,6 +94,7 @@ label span {
 				<div class="form-group">
 					<label>Question</label> <input type="text" class="form-control"
 						id="question" name="question" value="${que.question}">
+					<form:errors path="question" cssClass="error" />
 				</div>
 				<div class="form-group">
 					<label>Multiple Choice Answer</label>
@@ -77,7 +108,7 @@ label span {
 						<label class="form-check-label"> <input
 							class="form-check-input" type="radio" name="answerButton"
 							id="checkButton" onclick="getAnswerButton(this.value)"
-							value="checkbox"><span></span>Check Boxes
+							value="checkbox" checked><span></span>Check Boxes
 						</label>
 					</div>
 				</div>
@@ -85,15 +116,12 @@ label span {
 					<div class="answer-option">
 						<p id="options">
 							Options:
+							<form:errors path="questionOption" cssClass="error" />
 							<c:forEach var="options" items="${que.questionOption}">
 								<input id="option1" class="form-control" type="text"
 									name="questionOption" placeholder="option 1" value="${options}">
 							</c:forEach>
 						</p>
-					</div>
-					<div class="text-center">
-						<input type="button" id="addOption" value="Add Options"
-							class="btn btn-primary">
 					</div>
 				</div>
 				<div class="form-group">
@@ -119,19 +147,20 @@ label span {
 							</c:forEach>
 						</p>
 					</div>
+					<form:errors path="correctAnswer" cssClass="error" />
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary">Back</button>
-					<button type="submit" class="btn btn-warning">Update</button>
+					<a class="btn btn-outline-primary" role="button"
+						href="${pageContext.request.contextPath}/addQuestion/report">Back</a>
+					<button type="submit" class="btn btn-outline-warning">Update</button>
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var answerBtn = '${que.answerButton}';
 		var queType = '${que.questionType}';
 		var correctOpt = ${que.correctAnswer};
-
 		for (var i = 0; i < correctOpt.length; i++) {
 			document.getElementById("correctAnswer" + correctOpt[i]).checked = true;
 		}

@@ -40,7 +40,6 @@ public class DashboardController {
 			totalQueCount = totalQueCount + ex.getTotalQuestions();
 			totalPassStudents = totalPassStudents + ex.getTotalPass();
 		}
-		System.out.println("Exam controller");
 		model.addAttribute("totalStudents", totalRegStudents);
 		model.addAttribute("totalQuestions", totalQueCount);
 		model.addAttribute("totalPass", totalPassStudents);
@@ -50,7 +49,6 @@ public class DashboardController {
 
 	public String getDonutChart(Model model) {
 		List<Exam> exam = this.examService.getExam();
-		System.out.println("DonutChart controller");
 		List<Integer> labelList = new ArrayList<Integer>();
 		List<Integer> valueList = new ArrayList<Integer>();
 		int totalFailedStudents = 0;
@@ -68,7 +66,6 @@ public class DashboardController {
 	
 	public String getBarChart(Model model) {
 		List<Exam> exam = this.examService.getExam();
-		System.out.println("BarChart controller");
 		List<Integer> passValueList = new ArrayList<Integer>();
 		List<Integer> failedValueList = new ArrayList<Integer>();
 		List<Integer> totalValueList = new ArrayList<Integer>();
@@ -80,7 +77,6 @@ public class DashboardController {
         model.addAttribute("passValueArray",passValueList);
         model.addAttribute("failedValueArray",failedValueList);
         model.addAttribute("totalValueArray", totalValueList);
-     
 		return "admin/dashboard";
 	}
 }

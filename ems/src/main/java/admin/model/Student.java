@@ -30,12 +30,9 @@ public class Student {
 	private String higherEducationCertificate;
 	private String registrationDate;
 	
-	private String password;
-	
+	private String password;	
 	private String confirmPassword;
-
 	private Boolean agree;
-	
 	private String examAttempt;
 	
 	@ElementCollection

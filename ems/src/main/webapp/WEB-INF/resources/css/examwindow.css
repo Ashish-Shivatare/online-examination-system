@@ -7,6 +7,7 @@ body {
   padding-right: 0px;
   padding-left: 0px;
   height: 600px;
+  height: auto;
   width: 1200px;
   margin: 35px;
   background: #f7f7f8;
