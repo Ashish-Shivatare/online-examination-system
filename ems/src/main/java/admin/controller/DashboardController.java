@@ -1,22 +1,22 @@
 package admin.controller;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import admin.model.Exam;
 import admin.service.ExamService;
 
-@Controller
+@Controller 
 public class DashboardController {
 
 	@Autowired
 	private ExamService examService;
 	
-	@RequestMapping(path = "/dashboard")
+	@RequestMapping(path="/dashboard", method = RequestMethod.GET)
 	public String dashBoardHome(Model model) {
 		this.exam(model);
 		this.getDonutChart(model);
