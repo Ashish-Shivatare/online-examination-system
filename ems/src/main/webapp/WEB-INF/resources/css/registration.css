@@ -37,27 +37,6 @@ body,
 #checkbox {
   padding-left: 28px;
 }
-label {
-  color: lightslategray;
-}
-label input {
-  display: none;
-}
-label span {
-  height: 17px;
-  width: 17px;
-  border: 2px solid dimgray;
-  display: inline-block;
-  position: relative;
-  top: 4px;
-}
-[type="checkbox"]:checked + span:before {
-  content: "\2714";
-  position: absolute;
-  top: -5px;
-  left: 0;
-}
-
 #terms,
 #signIn {
   color: rgb(34, 185, 255);

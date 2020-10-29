@@ -18,7 +18,6 @@ public class AdminLoginController {
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
-
 		AdminLogin log = checkCookie(request);
 		if (log == null) {
 			modelMap.put("loginForm", new AdminLogin());
@@ -38,11 +37,11 @@ public class AdminLoginController {
 
 	@RequestMapping(path = "/loginForm", method = RequestMethod.POST)
 	public String loginRequestHandler(@ModelAttribute("loginForm") AdminLogin adminLogin, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response){
-		
+				
 		AdminLoginCredentials loginCredentials = new AdminLoginCredentials();
 		if(loginCredentials.login(adminLogin.getUsername(), adminLogin.getPassword())){
 			session.setAttribute("username", adminLogin.getUsername());
-			
+
 			if(request.getParameter("remember")!=null){
 				Cookie ckName = new Cookie("username", adminLogin.getUsername());
 				ckName.setMaxAge(3600);

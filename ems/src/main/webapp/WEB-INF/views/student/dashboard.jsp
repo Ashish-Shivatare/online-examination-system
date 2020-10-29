@@ -9,6 +9,47 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
 <title>Exam Over</title>
+<style type="text/css">
+body{
+	background: -webkit-linear-gradient(left, #643986, #98aed5);
+  	background: linear-gradient(to right, #643986, #98aed5);
+  	font-family: 'Roboto', sans-serif;
+}
+.container {
+	margin: 20px;
+	padding: 60px;
+	max-width: 1280px;
+}
+thead{
+  background-color: rgba(255,255,255,0.3);
+ }
+tbody{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 400;
+  font-size: 15px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+h1{
+color: white;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -31,7 +72,7 @@
 				</tr>
 				<tr>
 					<th>Status</th>
-					<td><c:out value="${status}" /></td>
+					<td id="status"><c:out value="${status}" /></td>
 				</tr>
 			</table>
 		</div>
@@ -43,5 +84,14 @@
 			</h3>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var a = document.getElementById("status");
+		if(a.innerHTML == "Failed"){
+			a.style.color = "red";
+			a.style.fontSize = "larger";
+			a.style.backgroundColor = "white";
+			a.style.fontWeight = "600";
+		}
+	</script>
 </body>
 </html>

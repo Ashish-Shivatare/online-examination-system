@@ -93,7 +93,7 @@ td {
 							<td><c:out value="${student.totalSolvedQuestion}" /></td>
 							<td><c:out value="${student.correctAnswerCount}" /></td>
 							<td><c:out value="${student.incorrectAnswerCount}" /></td>
-							<td><c:out value="${student.status}" /></td>
+							<td id="status"><c:out value="${student.status}" /></td>
 							<td><a id="viewQuestion" role="button"
 								href="${pageContext.request.contextPath}/studentReport/paper/${student.id}">View
 									Question paper</a></td>
