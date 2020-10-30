@@ -54,8 +54,11 @@
 					<div
 						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 						aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="logout">Logout</a> <a
-							class="dropdown-item" href="changePassword">My Account</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a> <a
+							class="dropdown-item" role="button" data-toggle="dropdown">My Account</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="changePassword">Change Password</a>
+							</div>
 					</div></li>
 			</ul>
 		</nav>

@@ -151,7 +151,7 @@ label span {
 				</div>
 				<div class="text-center">
 					<a class="btn btn-outline-primary" role="button"
-						href="${pageContext.request.contextPath}/addQuestion/report">Back</a>
+						href="${pageContext.request.contextPath}/admin/addQuestion/report">Back</a>
 					<button type="submit" class="btn btn-outline-warning">Update</button>
 				</div>
 			</form:form>

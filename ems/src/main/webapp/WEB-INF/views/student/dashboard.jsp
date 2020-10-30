@@ -79,7 +79,7 @@ color: white;
 		<div class="text-center">
 			<h3>
 				<a class="dropdown-item"
-					href="${pageContext.request.contextPath}/studentLogout"
+					href="${pageContext.request.contextPath}/student/logout"
 					role="button">Click to Logout From DashBoard</a>
 			</h3>
 		</div>

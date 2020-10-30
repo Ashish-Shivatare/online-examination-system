@@ -29,13 +29,13 @@ public class StudentRegistrationController {
 		binder.addValidators(studentValidator);
 	}
 	
-	@RequestMapping(value="/registration")
+	@RequestMapping(value="/student/registration")
 	public String registrationForm(Model model) {
 		model.addAttribute("student", new Student());
 		return "student/registration";
 	}
 
-	@RequestMapping(path="/registrationForm", method = RequestMethod.POST)
+	@RequestMapping(path="/student/registrationForm", method = RequestMethod.POST)
 	public String registerForm(@ModelAttribute("student") @Validated Student student, BindingResult result,
 			Model model) {
 
@@ -45,6 +45,6 @@ public class StudentRegistrationController {
 		}
 		student.setExamAttempt("false");
 		this.studentService.createStudent(student);
-		return "redirect:studentLogin";
+		return "redirect:/student/login";
 	}
 }

@@ -46,7 +46,7 @@ padding-bottom: 30px;
 <body>
 	<div class="container">
 		<div class="h1">Update Student Details</div>
-		<form action="${pageContext.request.contextPath}/updateStudentForm" method="post">
+		<form action="${pageContext.request.contextPath}/admin/updateStudentForm" method="post">
 			<div class="form-group">
 				<label>Student Id</label> <input type="text" class="form-control"
 					id="question" name="id" value="${student.id}" readonly>
@@ -104,7 +104,7 @@ padding-bottom: 30px;
 					class="form-control" name="registrationDate" value="${student.registrationDate}">
 			</div>
 			<div class="text-center">
-				<a href="${pageContext.request.contextPath}/studentInformation" class="btn btn-outline-primary">Back</a>
+				<a href="${pageContext.request.contextPath}/admin/studentInformation" class="btn btn-outline-primary">Back</a>
 				<button type="submit" class="btn btn-outline-warning">Update</button>
 			</div>
 		</form>

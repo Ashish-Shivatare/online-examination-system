@@ -18,6 +18,7 @@ public class StudentAnswer {
 	private int correctAnswerCount;
 	private int incorrectAnswerCount;
 	private String status;
+	private String date;
 	
 	public int getId() {
 		return id;
@@ -73,9 +74,14 @@ public class StudentAnswer {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public StudentAnswer(int id, int studentId, String studentName, String studentEmail, String studentMobileNo,
-			int totalSolvedQuestion, int correctAnswerCount, int incorrectAnswerCount, String status) {
+			int totalSolvedQuestion, int correctAnswerCount, int incorrectAnswerCount, String status, String date) {
 		super();
 		this.id = id;
 		this.studentId = studentId;
@@ -86,18 +92,10 @@ public class StudentAnswer {
 		this.correctAnswerCount = correctAnswerCount;
 		this.incorrectAnswerCount = incorrectAnswerCount;
 		this.status = status;
+		this.date = date;
 	}
-	
 	public StudentAnswer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public String toString() {
-		return "StudentAnswer [id=" + id + ", studentId=" + studentId + ", studentName=" + studentName
-				+ ", studentEmail=" + studentEmail + ", studentMobileNo=" + studentMobileNo + ", totalSolvedQuestion="
-				+ totalSolvedQuestion + ", correctAnswerCount=" + correctAnswerCount + ", incorrectAnswerCount="
-				+ incorrectAnswerCount + ", status=" + status + "]";
-	}
 }

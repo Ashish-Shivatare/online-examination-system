@@ -55,7 +55,7 @@
 			<br />
 			<div class="form-group">
 				<h6 id="accountRegister">
-					Click Here For Student Login<a href="studentLogin"><span id="signUp">
+					Click Here For Student Login<a href="student/login"><span id="signUp">
 							 Sign In</span></a>
 				</h6>
 			</div>

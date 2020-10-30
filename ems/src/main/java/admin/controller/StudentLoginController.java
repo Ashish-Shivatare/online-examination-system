@@ -16,6 +16,7 @@ import admin.service.ExamService;
 import admin.service.StudentService;
 
 @Controller
+@RequestMapping(path = "/student")
 public class StudentLoginController {
 	
 	@Autowired
@@ -24,22 +25,22 @@ public class StudentLoginController {
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping(path = "/studentLogin", method = RequestMethod.GET)
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String loginRequestHandler(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
 
 		StudentLogin log = checkCookie(request);
 		if (log == null) {
-			modelMap.put("studentLoginForm", new StudentLogin());
+			modelMap.put("loginForm", new StudentLogin());
 			return "student/login";
 		}   
 		else {  
 			if(this.studentService.studentLogin(log.getEmail(), log.getPassword())){
 				session.setAttribute("email", log.getEmail());
 				if(!this.examService.getExamAttempt(log.getEmail(), log.getPassword())) {
-					return "redirect:exam";
+					return "redirect:/exam";
 				}
 				else {
-					return "redirect:finish/studentDashboard";
+					return "redirect:/finish/studentDashboard";
 				}
 			} else {
 				modelMap.put("error", "invalid login from cookie");
@@ -48,7 +49,7 @@ public class StudentLoginController {
 		}       
 	}
 
-	@RequestMapping(path = "/studentLoginForm", method = RequestMethod.POST)
+	@RequestMapping(path = "/loginForm", method = RequestMethod.POST)
 	public String loginRequestHandler(@ModelAttribute StudentLogin studentLogin, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response){
 
 		if(this.studentService.studentLogin(studentLogin.getEmail(), studentLogin.getPassword())){
@@ -64,10 +65,10 @@ public class StudentLoginController {
 			}
 			if(!this.examService.getExamAttempt(studentLogin.getEmail(), studentLogin.getPassword())) {
 				this.studentService.updateUserDetails(studentLogin.getEmail());
-				return "redirect:exam";
+				return "redirect:/exam";
 			}
 			else {
-				return "redirect:finish/studentDashboard";
+				return "redirect:/finish/studentDashboard";
 			}
 		}
 		else
@@ -77,7 +78,7 @@ public class StudentLoginController {
 		}
 	}
 
-	@RequestMapping(value = "studentLogout", method = RequestMethod.GET)
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response){
 		session.removeAttribute("email");
 		for (Cookie cookie : request.getCookies()) {

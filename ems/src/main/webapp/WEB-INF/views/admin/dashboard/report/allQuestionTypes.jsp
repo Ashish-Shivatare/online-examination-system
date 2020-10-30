@@ -85,8 +85,8 @@ td{
 							<tr>
 								<td><c:out value="${que.id}" /></td>
 								<td><c:out value="${que.questionType}" /></td>
-								<td><a role="button" href="${pageContext.request.contextPath}/questionType/update/${que.questionType}/${que.id}" id="update">Update</a></td>
-								<td><a role="button" href="${pageContext.request.contextPath}/questionType/delete/${que.id}" id="delete">Delete</a></td>
+								<td><a role="button" href="${pageContext.request.contextPath}/admin/questionType/update/${que.questionType}/${que.id}" id="update">Update</a></td>
+								<td><a role="button" href="${pageContext.request.contextPath}/admin/questionType/delete/${que.id}" id="delete">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

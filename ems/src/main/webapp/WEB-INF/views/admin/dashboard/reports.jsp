@@ -95,7 +95,7 @@ td {
 							<td><c:out value="${student.incorrectAnswerCount}" /></td>
 							<td id="status"><c:out value="${student.status}" /></td>
 							<td><a id="viewQuestion" role="button"
-								href="${pageContext.request.contextPath}/studentReport/paper/${student.id}">View
+								href="${pageContext.request.contextPath}/admin/studentReport/paper/${student.id}">View
 									Question paper</a></td>
 						</tr>
 					</c:forEach>

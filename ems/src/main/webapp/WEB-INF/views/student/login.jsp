@@ -24,7 +24,7 @@
 <body style="background-color: orange;">
 
 	<div class="container">
-		<form action="studentLoginForm" method="post">
+		<form action="loginForm" method="post">
 			<div class="form-group">
 				<h4 id="signIn">Student Sign In</h4>
 			</div>

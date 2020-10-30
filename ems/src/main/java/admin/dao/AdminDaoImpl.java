@@ -1,5 +1,7 @@
 package admin.dao;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
 
@@ -7,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import admin.model.Answer;
-import admin.model.Exam;
 import admin.model.Question;
 import admin.model.QuestionType;
 import admin.model.Student;
@@ -22,13 +23,7 @@ public class AdminDaoImpl {
 	
 	Student st = new Student();
 	ArrayList<Answer> list1 = new ArrayList<Answer>();
-	int checkId = 0;
-
-	public List<Exam> getAll() {
-		List<Exam> list=new ArrayList<Exam>();  
-		list = this.hibernateTemplate.loadAll(Exam.class);
-		return list;
-	}
+	private int checkId = 0;
 
 	public void saveQuestion(Question question) {
 		this.hibernateTemplate.saveOrUpdate(question);
@@ -136,6 +131,8 @@ public class AdminDaoImpl {
 
 	public void updateUser(String email) {
 		Student student = this.hibernateTemplate.load(Student.class, checkId);
+		LocalDate date = LocalDate.now();
+		student.setExamDate(date.toString());
 		student.setExamAttempt("true");
 		st = student;
 		this.saveStudent(student);
@@ -165,6 +162,7 @@ public class AdminDaoImpl {
 		studentAnswer.setStudentName(st.getName());
 		studentAnswer.setStudentEmail(st.getEmail());
 		studentAnswer.setStudentMobileNo(st.getMobileNo());
+		studentAnswer.setDate(st.getExamDate());
 		this.hibernateTemplate.save(studentAnswer);
 	}
 	

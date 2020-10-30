@@ -9,8 +9,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,600;0,618;0,680;0,793;1,577&display=swap"
 	rel="stylesheet" />
-<link href="<c:url value="/resources/css/registration.css"/>"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/registration.css"/>" type="text/css" />
 </head>
 <body>
 	<div class="container">
@@ -123,7 +123,7 @@
 			</div>
 			<div class="form-group">
 				<h6 id="account">
-					Already have an account?<a href="studentLogin"><span
+					Already have an account?<a href="login"><span
 						id="signIn"> Sign In</span></a>
 				</h6>
 			</div>

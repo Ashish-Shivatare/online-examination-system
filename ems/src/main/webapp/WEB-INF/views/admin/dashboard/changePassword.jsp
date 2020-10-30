@@ -31,7 +31,7 @@ body {
 		<div class="text-center">
 			<h1>Change Password</h1>
 		</div>
-		<form action="addQuestionForm" method="get">
+		<form action="#" method="get">
 			<div class="form-group">
 				<label>Enter Old Password</label> <input type="text"
 					class="form-control" name="oldPassword" placeholder="Old Password">

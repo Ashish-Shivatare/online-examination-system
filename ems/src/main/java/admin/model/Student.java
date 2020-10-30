@@ -1,7 +1,6 @@
 package admin.model;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,6 +33,7 @@ public class Student {
 	private String confirmPassword;
 	private Boolean agree;
 	private String examAttempt;
+	private String examDate;
 	
 	@ElementCollection
 	@OneToMany(cascade = CascadeType.ALL)
@@ -175,6 +175,14 @@ public class Student {
 		this.examAttempt = examAttempt;
 	}
 
+	public String getExamDate() {
+		return examDate;
+	}
+
+	public void setExamDate(String examDate) {
+		this.examDate = examDate;
+	}
+
 	public List<Answer> getAnswer() {
 		return answer;
 	}
@@ -186,7 +194,7 @@ public class Student {
 	public Student(int id, String name, String email, String mobileNo, String higherEducation, String gender,
 			String dob, String address, String city, String country, String panCard, String higherEducationCertificate,
 			String registrationDate, String password, String confirmPassword, Boolean agree, String examAttempt,
-			List<Answer> answer) {
+			String examDate, List<Answer> answer) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -205,11 +213,13 @@ public class Student {
 		this.confirmPassword = confirmPassword;
 		this.agree = agree;
 		this.examAttempt = examAttempt;
+		this.examDate = examDate;
 		this.answer = answer;
 	}
 
 	public Student() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -219,6 +229,6 @@ public class Student {
 				+ address + ", city=" + city + ", country=" + country + ", panCard=" + panCard
 				+ ", higherEducationCertificate=" + higherEducationCertificate + ", registrationDate="
 				+ registrationDate + ", password=" + password + ", confirmPassword=" + confirmPassword + ", agree="
-				+ agree + ", examAttempt=" + examAttempt + ", answer=" + answer + "]";
+				+ agree + ", examAttempt=" + examAttempt + ", examDate=" + examDate + ", answer=" + answer + "]";
 	}
 }

@@ -48,7 +48,7 @@ body {
 	<div class="container">
 		<div class="h1 text-center">Update Question Type</div>
 		<div id="formDiv">
-			<form action="${pageContext.request.contextPath}/questionType/update"
+			<form action="${pageContext.request.contextPath}/admin/questionType/update"
 				method="post">
 				<div class="form-group">
 					<input type="text" class="form-control" id="questionId" name="id"
@@ -60,7 +60,7 @@ body {
 						value="${questionType}">
 				</div>
 				<div class="text-center">
-					<a class="btn btn-outline-primary" role="button" href="${pageContext.request.contextPath}/questionType/report">Back</a>
+					<a class="btn btn-outline-primary" role="button" href="${pageContext.request.contextPath}/admin/questionType/report">Back</a>
 					<button class="btn btn-outline-warning" type="submit">Update</button>
 				</div>
 			</form>

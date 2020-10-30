@@ -61,7 +61,6 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
-				<!-- <prop key="hibernate.show_sql">true</prop> -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 			</props>
@@ -70,7 +69,6 @@
 
 		<property name="annotatedClasses">
 			<list>
-				<value>admin.model.Exam</value>
 				<value>admin.model.QuestionType</value>
 				<value>admin.model.Question</value>
 				<value>admin.model.Answer</value>

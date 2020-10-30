@@ -27,7 +27,7 @@ public class AdminLoginController {
 			AdminLoginCredentials adminLogin = new AdminLoginCredentials();
 			if(adminLogin.login(log.getUsername(), log.getPassword())){
 				session.setAttribute("username", log.getUsername());
-				return "redirect:dashboard";
+				return "redirect:admin/dashboard";
 			} else {
 				modelMap.put("error", "invalid login from cookie");
 				return "admin/login";
@@ -50,7 +50,7 @@ public class AdminLoginController {
 				ckPassword.setMaxAge(3600);
 				response.addCookie(ckPassword);
 			}
-			return "redirect:dashboard";
+			return "redirect:/admin/dashboard";
 		}
 		else
 		{

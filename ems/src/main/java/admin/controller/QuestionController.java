@@ -24,6 +24,7 @@ import admin.service.DashboardService;
 import admin.validator.QuestionValidator;
 
 @Controller
+@RequestMapping(path = "admin")
 public class QuestionController {
 
 	@Autowired
@@ -47,10 +48,10 @@ public class QuestionController {
 	@RequestMapping(path = "/questionTypeForm", method = RequestMethod.POST)
 	public String saveQuestionType(@ModelAttribute QuestionType questionType) {	
 		if(questionType.getQuestionType().isEmpty()) {
-			return "redirect:questionType";
+			return "redirect:/admin/questionType";
 		}
 		this.dashboardService.createQuestionType(questionType);
-		return "redirect:questionType/report";
+		return "redirect:/admin/questionType/report";
 	}
 
 	@RequestMapping(path = "/questionType/report")
@@ -70,16 +71,16 @@ public class QuestionController {
 	@RequestMapping(path = "/questionType/update")
 	public String questionTypeUpdate(@ModelAttribute QuestionType questionType){
 		if(questionType.getQuestionType().isEmpty()) {
-			return "redirect:/questionType/report";
+			return "redirect:/admin/questionType/report";
 		}
 		this.dashboardService.createQuestionType(questionType);
-		return "redirect:/questionType/report";
+		return "redirect:/admin/questionType/report";
 	}
 
 	@RequestMapping(path = "/questionType/delete/{questionId}")
 	public String questionTypeDelete(@PathVariable("questionId") int questionId) {
 		this.dashboardService.deleteQuestionType(questionId);
-		return "redirect:/questionType/report";
+		return "redirect:/admin/questionType/report";
 	}
 	
 	@RequestMapping(path = "/addQuestion")
@@ -103,7 +104,7 @@ public class QuestionController {
 			this.dashboardService.createQuestion(question);
 			System.out.println(question);
 		}
-		modelAndView = new ModelAndView("redirect:addQuestion/report");
+		modelAndView = new ModelAndView("redirect:/admin/addQuestion/report");
 		
 		return modelAndView;
 	}
@@ -135,13 +136,13 @@ public class QuestionController {
 			return modelAndView;
 		}
 		this.dashboardService.createQuestion(question);
-		modelAndView  = new ModelAndView("redirect:/addQuestion/report");
+		modelAndView  = new ModelAndView("redirect:/admin/addQuestion/report");
 		return modelAndView;
 	}
 
 	@RequestMapping(path = "/addQuestion/delete/{questionId}")
 	public String addQuestionDelete(@PathVariable("questionId") int id) {
 		this.dashboardService.deleteQuestion(id);
-		return "redirect:/addQuestion/report";
+		return "redirect:/admin/addQuestion/report";
 	}
 }
