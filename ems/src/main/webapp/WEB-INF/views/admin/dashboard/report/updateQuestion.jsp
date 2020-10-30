@@ -89,7 +89,7 @@ label span {
 				modelAttribute="updateQuestion">
 				<div class="form-group">
 					<label>Question Id</label> <input type="text" class="form-control"
-						name="id" value="${que.id}" readonly>
+						name="id" value="${que.id}" readonly>	
 				</div>
 				<div class="form-group">
 					<label>Question</label> <input type="text" class="form-control"

@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import admin.model.AdminLogin;
 import admin.model.AdminLoginCredentials;
 
@@ -29,7 +28,7 @@ public class AdminLoginController {
 				session.setAttribute("username", log.getUsername());
 				return "redirect:/admin/dashboard";
 			} else {
-				modelMap.put("error", "invalid login from cookie");
+				modelMap.put("error", "Invalid username or password");
 				return "admin/login";
 			}
 		}       
@@ -54,7 +53,7 @@ public class AdminLoginController {
 		}
 		else
 		{
-			modelMap.put("error", "Invalid login not from cookie");
+			modelMap.put("error", "Invalid username or password");
 			return "admin/login";
 		}
 	}

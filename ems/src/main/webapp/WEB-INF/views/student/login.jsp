@@ -27,6 +27,7 @@
 		<form action="loginForm" method="post">
 			<div class="form-group">
 				<h4 id="signIn">Student Sign In</h4>
+				<c:out value="${error}"></c:out>
 			</div>
 
 			<div class="form-group">

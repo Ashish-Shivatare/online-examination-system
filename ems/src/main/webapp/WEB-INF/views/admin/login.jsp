@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@
 	href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,600;0,618;0,680;0,793;1,577&display=swap"
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/login.css"/>" rel="stylesheet">
-
 </head>
 
 <body style="background-color: orange;">
@@ -27,6 +27,7 @@
 		<form action="loginForm" method="post">
 			<div class="form-group">
 				<h4 id="signIn">Admin Sign In</h4>
+				<span id="error"><c:out value="${error}"></c:out></span>
 			</div>
 
 			<div class="form-group">

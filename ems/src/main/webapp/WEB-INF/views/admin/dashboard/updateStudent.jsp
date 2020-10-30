@@ -17,28 +17,34 @@ body {
 	color: white;
 	font-size: 17px;
 }
+
 .btn-outline-primary {
-	background-color:white;
-	border-color:#643986;
+	background-color: white;
+	border-color: #643986;
 	color: #643986;
 }
+
 .btn-outline-warning {
-	background-color:white;
-	border-color:#643986;
+	background-color: white;
+	border-color: #643986;
 	color: #643986;
 }
+
 .container {
 	margin: 40px;
-	margin-top: 20px; 
+	margin-top: 20px;
 	padding: 80px;
 }
-.h1{
-padding-bottom: 30px;
+
+.h1 {
+	padding-bottom: 30px;
 }
-.text-center{
+
+.text-center {
 	padding-top: 10px;
 }
-.error{
+
+.error {
 	color: red;
 }
 </style>
@@ -46,65 +52,80 @@ padding-bottom: 30px;
 <body>
 	<div class="container">
 		<div class="h1">Update Student Details</div>
-		<form action="${pageContext.request.contextPath}/admin/updateStudentForm" method="post">
+		<form
+			action="${pageContext.request.contextPath}/admin/updateStudentForm"
+			method="post">
 			<div class="form-group">
 				<label>Student Id</label> <input type="text" class="form-control"
 					id="question" name="id" value="${student.id}" readonly>
 			</div>
-		
+
 			<div class="form-group">
-				<label>Student Name</label> <input type="text" class="form-control" name="name" value="${student.name}">
-				<%-- <form:errors path="name" cssClass="error"/> --%>
+				<label>Student Name</label> <input type="text" class="form-control"
+					name="name" value="${student.name}">
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input type="text" class="form-control"
+					name="email" value="${student.email}">
+
 			</div>
 
 			<div class="form-group">
-				<label>Email</label> <input type="text" class="form-control" name="email" value="${student.email}">
-			</div>
-
-			<div class="form-group">
-				<label>Mobile No</label> <input type="text" class="form-control" name="mobileNo" value="${student.mobileNo}">
+				<label>Mobile No</label> <input type="text" class="form-control"
+					name="mobileNo" value="${student.mobileNo}">
 			</div>
 
 			<div class="form-group">
 				<label>Higher Education</label> <input type="text"
-					class="form-control" name="higherEducation" value="${student.higherEducation}">
+					class="form-control" name="higherEducation"
+					value="${student.higherEducation}">
 			</div>
 
 			<div class="form-group">
-				<label>Gender</label> <input type="text" class="form-control" name="gender" value="${student.gender}">
+				<label>Gender</label> <input type="text" class="form-control"
+					name="gender" value="${student.gender}">
 			</div>
 
 			<div class="form-group">
-				<label>Date of birth</label> <input type="text" class="form-control" name="dob" value="${student.dob}">
+				<label>Date of birth</label> <input type="text" class="form-control"
+					name="dob" value="${student.dob}">
 			</div>
 
 			<div class="form-group">
-				<label>Address</label> <input type="text" class="form-control" name="address" value="${student.address}">
+				<label>Address</label> <input type="text" class="form-control"
+					name="address" value="${student.address}">
 			</div>
 
 			<div class="form-group">
-				<label>City</label> <input type="text" class="form-control" name="city" value="${student.city}">
+				<label>City</label> <input type="text" class="form-control"
+					name="city" value="${student.city}">
 			</div>
 
 			<div class="form-group">
-				<label>Country</label> <input type="text" class="form-control" name="country" value="${student.country}">
+				<label>Country</label> <input type="text" class="form-control"
+					name="country" value="${student.country}">
 			</div>
 
 			<div class="form-group">
-				<label>Pan Card</label> <input type="text" class="form-control" name="panCard" value="${student.panCard}">
+				<label>Pan Card</label> <input type="text" class="form-control"
+					name="panCard" value="${student.panCard}">
 			</div>
 
 			<div class="form-group">
 				<label>Higher Education Certificate</label> <input type="text"
-					class="form-control" name="higherEducationCertificate" value="${student.higherEducationCertificate}">
+					class="form-control" name="higherEducationCertificate"
+					value="${student.higherEducationCertificate}">
 			</div>
 
 			<div class="form-group">
 				<label>Registration Date</label> <input type="text"
-					class="form-control" name="registrationDate" value="${student.registrationDate}">
+					class="form-control" name="registrationDate"
+					value="${student.registrationDate}">
 			</div>
 			<div class="text-center">
-				<a href="${pageContext.request.contextPath}/admin/studentInformation" class="btn btn-outline-primary">Back</a>
+				<a
+					href="${pageContext.request.contextPath}/admin/studentInformation"
+					class="btn btn-outline-primary">Back</a>
 				<button type="submit" class="btn btn-outline-warning">Update</button>
 			</div>
 		</form>

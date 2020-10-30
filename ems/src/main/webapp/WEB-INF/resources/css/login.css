@@ -68,3 +68,6 @@ label span {
   top: -5px;
   left: 0;
 }
+#error{
+	color: red;
+}

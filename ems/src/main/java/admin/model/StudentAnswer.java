@@ -1,4 +1,5 @@
 package admin.model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -97,5 +98,4 @@ public class StudentAnswer {
 	public StudentAnswer() {
 		super();
 	}
-	
 }

@@ -46,13 +46,13 @@
 			<div class="form-group">
 				<div class="form-check  form-check-inline">
 					<label class="form-check-label"> <input name="gender"
-						type="radio" class="form-check-input" checked /><span>Male</span>
+						type="radio" class="form-check-input" value="Male" checked /><span>Male</span>
 					</label>
 				</div>
 
 				<div class="form-check  form-check-inline">
 					<label class="form-check-label"> <input name="gender"
-						type="radio" class="form-check-input" /><span>Female</span>
+						type="radio" class="form-check-input"  value="Female"/><span>Female</span>
 					</label>
 				</div>
 				<form:errors path="gender" cssClass="error" />

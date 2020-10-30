@@ -4,13 +4,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import admin.model.Answer;
 import admin.model.Question;
 import admin.model.Student;
@@ -28,14 +29,6 @@ public class AdminStudentController {
 	
 	@Autowired
 	private StudentService studentService;
-	
-	@Autowired
-	private StudentValidator studentValidator;
-	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.addValidators(studentValidator);
-	}
 	
 	private Student st = new Student();
 	
@@ -55,7 +48,7 @@ public class AdminStudentController {
 	}
 
 	@RequestMapping(path = "/updateStudentForm", method = RequestMethod.POST)
-	public String updateStudent(@ModelAttribute Student student) {
+	public String updateStudent(@ModelAttribute("updateStudent")Student student) {
 		student.setPassword(st.getPassword());
 		student.setConfirmPassword(st.getConfirmPassword());
 		student.setAgree(st.getAgree());
